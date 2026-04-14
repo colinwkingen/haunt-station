@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ddahioatlcd32"]
+
+[ext_resource type="PackedScene" uid="uid://rnk2kd6gcqs4" path="res://station/tiles/station-tileset.blend" id="1_0ajj5"]
+
+[node name="station-tileset" unique_id=1886121280 instance=ExtResource("1_0ajj5")]

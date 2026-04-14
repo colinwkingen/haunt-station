@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://pxw3h411c5r2"]
+
+[ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/basic_container.gd" id="1_34of5"]
+[ext_resource type="MeshLibrary" uid="uid://dkif60knyc34n" path="res://station/tiles/station-walls.tres" id="2_wrjyh"]
+
+[node name="BasicContainer1" type="Node3D" unique_id=811997654 node_paths=PackedStringArray("container_name_label")]
+script = ExtResource("1_34of5")
+container_name_label = NodePath("LabelContainerName")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1827992161]
+mesh_library = ExtResource("2_wrjyh")
+data = {
+"cells": PackedInt32Array(0, 0, 1441794, 65535, 0, 1441794, 65534, 0, 1048581, 1, 0, 1441797, 65535, 1, 655365, 0, 1, 655365, 1, 1, 655363, 65534, 1, 1048579)
+}
+
+[node name="LabelContainerName" type="Label3D" parent="." unique_id=1249061288]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 1)
+text = "placeholder"

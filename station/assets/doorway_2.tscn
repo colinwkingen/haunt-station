@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dqpofcx3t21n5"]
+
+[ext_resource type="PackedScene" uid="uid://1gljeun6t54f" path="res://station/assets/doorway2.blend" id="1_7nhe4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7nhe4"]
+size = Vector3(0.5, 0.25, 2)
+
+[node name="doorway2" unique_id=857429570 instance=ExtResource("1_7nhe4")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="3" unique_id=1087298469]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=996659761]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.5084367, 0, 0)
+shape = SubResource("BoxShape3D_7nhe4")

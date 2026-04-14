@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ContainerData" format=3 uid="uid://c1f8tx8q1kpxd"]
+
+[ext_resource type="Script" uid="uid://cc5ul5xn7b30w" path="res://station/containers/definitions/container_data.gd" id="1_dss6s"]
+[ext_resource type="PackedScene" uid="uid://pxw3h411c5r2" path="res://station/containers/variants/basic_container_2.tscn" id="1_gxrwu"]
+
+[resource]
+script = ExtResource("1_dss6s")
+container_name = "Second Container"
+container_scene = ExtResource("1_gxrwu")
+metadata/_custom_type_script = "uid://cc5ul5xn7b30w"

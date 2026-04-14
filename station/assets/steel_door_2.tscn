@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://nioe4i6iyhxn"]
+
+[ext_resource type="PackedScene" uid="uid://brdkcvaks8ufw" path="res://station/assets/steel-door-2.blend" id="1_jnhbj"]
+
+[node name="steel-door-2" unique_id=302010356 instance=ExtResource("1_jnhbj")]

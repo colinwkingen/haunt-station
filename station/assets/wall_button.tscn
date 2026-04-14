@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://db1hmlbj5l483"]
+
+[ext_resource type="Script" uid="uid://dohpdn3hnc12v" path="res://addons/cogito/CogitoObjects/cogito_button.gd" id="1_85pre"]
+[ext_resource type="AudioStream" uid="uid://b6wdy2102jymr" path="res://addons/cogito/Assets/Audio/Kenney/UiAudio/switch2.ogg" id="2_23wsq"]
+[ext_resource type="PackedScene" uid="uid://l61jtpfxu5x5" path="res://addons/cogito/Components/Interactions/BasicInteraction.tscn" id="3_v7odi"]
+[ext_resource type="PackedScene" uid="uid://k28yrbg3k3pw" path="res://addons/cogito/Components/HitboxComponent.tscn" id="4_a7nw4"]
+[ext_resource type="PackedScene" uid="uid://cj0yaeh3yg7tu" path="res://addons/cogito/Components/Properties/CogitoProperties.tscn" id="5_f0nva"]
+[ext_resource type="PackedScene" uid="uid://6d6is2x1egew" path="res://addons/cogito/Components/CurrencyCheckComponent.tscn" id="6_c7s72"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_clo4d"]
+top_radius = 0.05
+bottom_radius = 0.08
+height = 0.05
+radial_segments = 12
+rings = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kl6m"]
+albedo_color = Color(0, 1, 0.184314, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o2wjq"]
+size = Vector3(0.2, 0.05, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nti18"]
+size = Vector3(0.150977, 0.069043, 0.147333)
+
+[node name="GenericButton" type="AnimatableBody3D" unique_id=1679353221]
+transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0)
+collision_layer = 3
+script = ExtResource("1_85pre")
+press_sound = ExtResource("2_23wsq")
+press_cooldown_time = 1.0
+
+[node name="ButtonMesh_off" type="MeshInstance3D" parent="." unique_id=1188133677]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_clo4d")
+surface_material_override/0 = SubResource("StandardMaterial3D_3kl6m")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=319128848]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.05, 0, 0)
+mesh = SubResource("BoxMesh_o2wjq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=547105650]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.05, 0, -0.002)
+shape = SubResource("BoxShape3D_nti18")
+
+[node name="BasicInteraction" parent="." unique_id=1306491245 instance=ExtResource("3_v7odi")]
+
+[node name="HitboxComponent" parent="." unique_id=1351127466 instance=ExtResource("4_a7nw4")]
+
+[node name="CogitoProperties" parent="." unique_id=907398228 instance=ExtResource("5_f0nva")]
+material_properties = 1
+burn_damage_amount = 1.0
+
+[node name="CurrencyCheck" parent="." unique_id=1743687655 instance=ExtResource("6_c7s72")]
+currency_cost = 0
+
+[connection signal="damage_received" from="." to="." method="_on_damage_received"]
