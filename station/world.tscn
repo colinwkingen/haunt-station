@@ -12,6 +12,9 @@
 [ext_resource type="Resource" uid="uid://c1f8tx8q1kpxd" path="res://station/containers/definitions/BasicContainer2.tres" id="10_kiymc"]
 [ext_resource type="Script" uid="uid://jk6cp4oe2gn6" path="res://station/containers/anchors/anchor.gd" id="10_xqwbx"]
 [ext_resource type="Script" uid="uid://cjpgxsaekjusf" path="res://station/containers/definitions/container_anchor_data.gd" id="11_ctv1g"]
+[ext_resource type="Resource" uid="uid://dh2ewy0vl6ugb" path="res://station/containers/definitions/ShippingContainer1.tres" id="11_h7gbq"]
+[ext_resource type="PackedScene" uid="uid://1587lfmswgt6" path="res://station/assets/doors/bay_door_blue.tscn" id="14_c2gt3"]
+[ext_resource type="Script" uid="uid://bwwrcdxxgvbk7" path="res://station/assets/doors/bay_door_blue.gd" id="15_l0uss"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_p1d26"]
 
@@ -81,7 +84,7 @@ transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 2.1, 1, 11)
 
 [node name="ContainerManager" type="Node3D" parent="." unique_id=1122831635]
 script = ExtResource("7_4inqu")
-container_data_array = Array[ExtResource("8_xqwbx")]([ExtResource("9_ctv1g"), ExtResource("10_kiymc")])
+container_data_array = Array[ExtResource("8_xqwbx")]([ExtResource("9_ctv1g"), ExtResource("10_kiymc"), ExtResource("11_h7gbq")])
 
 [node name="ContainerAnchors" type="Node3D" parent="." unique_id=444795097]
 
@@ -90,6 +93,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 14)
 script = ExtResource("10_xqwbx")
 anchor_id = 1
 anchor_data = SubResource("Resource_kiymc")
+
+[node name="bay-door-blue" parent="ContainerAnchors/Anchor1" unique_id=1907028322 groups=["BayDoor"] instance=ExtResource("14_c2gt3")]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0, 2.5, -1.875)
+script = ExtResource("15_l0uss")
 
 [node name="Anchor2" type="Node3D" parent="ContainerAnchors" unique_id=153163616 groups=["Anchor"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 14)

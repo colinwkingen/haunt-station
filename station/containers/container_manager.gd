@@ -1,16 +1,28 @@
 class_name ContainerManager
 extends Node3D
 
+signal container_swap_finished
+
 # cant see it? look for the instance in main, dummy
 @export var container_data_array: Array[ContainerData]
 
 var current_container_index: int = -1
 # the current container, the focus
 var current_container_instance: Node3D
+
 # all the currently spawned container instances
 var container_instances: Array[Node3D] = []
 
-#var anchors_by_id: Dictionary[int, Node3D]
+var is_switching: bool = false
+
+# TODO lets assign each data an id, and then have two parallel
+# dicts- one id -> data and one id -> instance
+# we can track a sliding window of containers we instantiate
+# and free or create them in dict two while maintaining id and data
+var container_data_by_id: Dictionary[int, ContainerData]
+var container_instance_by_id: Dictionary[int, Node3D]
+# adjust to one for each anchor, and/or last/previous
+var allowed_active_containers: int = 1
 
 var containers_initialized: bool = false
 
@@ -69,6 +81,7 @@ func unstage_container(container: Node3D) -> void:
 	if container:
 		container.visible = false
 		container.set_process_mode(Node.PROCESS_MODE_DISABLED)
+		container.set_position(Vector3(100,100,100))
 	else:
 		print("unstage_container: no container was provided")
 	
@@ -117,12 +130,20 @@ func _set_container_location_to_anchor_location(container: Node3D, anchor: Node3
 #Show/enable next.
 func rotate_containers() -> void:
 	unstage_container(get_current_container())
-	if current_container_index < container_instances.size():
+	if current_container_index < (container_instances.size()-1):
 		current_container_index +=1
 	else: 
 		current_container_index = 0
 	stage_current_container()
 	set_current_container_to_anchor(1)
+
+func rotate_containers_async() -> void:
+	rotate_containers()
+	# one frame wait, maybe not necessary
+	# without it all actions are processed in one frame tho
+	await get_tree().process_frame
+	container_swap_finished.emit()
+
 
 
 # required:
@@ -132,9 +153,18 @@ func rotate_containers() -> void:
 #get_anchor_by_id() returns nullable; caller handles null safely. +
 #No Resource is treated as a spatial node. +
 
-	
-
-
-
 func _on_container_rotate_button_pressed() -> void:
-	rotate_containers()
+	if is_switching:
+		return
+	is_switching = true
+	var bay_door: Node3D
+	var anchor = get_anchor_by_id(1)
+	for node in anchor.get_children():
+		if node.is_in_group("BayDoor"):
+			bay_door = node
+	if !bay_door:
+		is_switching = false
+		return
+	await bay_door.close_door_async()
+	await rotate_containers_async()
+	await bay_door.open_door_async()

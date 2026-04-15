@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://c45bwbxjunbt7"]
-
-[ext_resource type="PackedScene" uid="uid://ba7xfkrtgs4bv" path="res://station/assets/station-doorway.blend" id="1_vgif7"]
-
-[node name="station-doorway" unique_id=1055930481 instance=ExtResource("1_vgif7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)

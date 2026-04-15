@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://myehny8dtmhq"]
+[gd_scene format=3 uid="uid://dqwr2a1bmajwv"]
 
 [ext_resource type="Script" uid="uid://cismjpvxmsbf2" path="res://addons/cogito/CogitoObjects/cogito_door.gd" id="1_smjw4"]
 [ext_resource type="AudioStream" uid="uid://wfjccrp1mkra" path="res://addons/cogito/Assets/Audio/squidge316_sliding-door_01.ogg" id="2_2too1"]

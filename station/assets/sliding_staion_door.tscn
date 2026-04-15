@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://cismjpvxmsbf2" path="res://addons/cogito/CogitoObjects/cogito_door.gd" id="1_6x4jt"]
 [ext_resource type="AudioStream" uid="uid://wfjccrp1mkra" path="res://addons/cogito/Assets/Audio/squidge316_sliding-door_01.ogg" id="2_1tmwr"]
 [ext_resource type="AudioStream" uid="uid://rmrsysovlvyo" path="res://addons/cogito/Assets/Audio/squidge316_sliding-door_02.ogg" id="3_d6hf8"]
-[ext_resource type="PackedScene" uid="uid://l61jtpfxu5x5" path="res://addons/cogito/Components/Interactions/BasicInteraction.tscn" id="4_ck3wj"]
 [ext_resource type="PackedScene" uid="uid://nioe4i6iyhxn" path="res://station/assets/steel_door_2.tscn" id="5_he4xt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w6tyf"]
 size = Vector3(0.2, 2.5, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6x4jt"]
+size = Vector3(3, 2.5, 2.5)
 
 [node name="SlidingStationDoor" type="Node3D" unique_id=540268507]
 
@@ -22,7 +24,7 @@ auto_close_time = 2.0
 door_type = 1
 closed_position = Vector3(0, 0, 1)
 open_position = Vector3(0, 0, -1.44)
-door_speed = 0.3
+door_speed = 0.2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KSI_door_half" unique_id=170764923]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 1.25, -1)
@@ -32,7 +34,13 @@ shape = SubResource("BoxShape3D_w6tyf")
 volume_db = -13.0
 bus = &"SFX"
 
-[node name="BasicInteraction" parent="KSI_door_half" unique_id=961076405 instance=ExtResource("4_ck3wj")]
-
 [node name="steel-door-2" parent="KSI_door_half" unique_id=302010356 instance=ExtResource("5_he4xt")]
 transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 0.1, 0, -1)
+
+[node name="DoorOpenArea" type="Area3D" parent="KSI_door_half" unique_id=202237791]
+
+[node name="CollideDoorOpens" type="CollisionShape3D" parent="KSI_door_half/DoorOpenArea" unique_id=171112329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1)
+shape = SubResource("BoxShape3D_6x4jt")
+
+[connection signal="body_entered" from="KSI_door_half/DoorOpenArea" to="KSI_door_half" method="_on_door_open_area_body_entered"]
