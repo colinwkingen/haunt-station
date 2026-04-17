@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://xi7iiid8qwt0"]
+
+[ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/container.gd" id="1_qxbpv"]
+[ext_resource type="PackedScene" uid="uid://urinr43lpmvc" path="res://assets/ShippingContainer/Scenes/Containers/shipping_crate_5.tscn" id="2_qxbpv"]
+
+[node name="BasicContainer2" type="Node3D" unique_id=811997654 node_paths=PackedStringArray("container_name_label")]
+script = ExtResource("1_qxbpv")
+container_name_label = NodePath("LabelContainerName")
+
+[node name="LabelContainerName" type="Label3D" parent="." unique_id=1249061288]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 0)
+text = "placeholder"
+
+[node name="ShippingCrate_6" parent="." unique_id=1975674889 instance=ExtResource("2_qxbpv")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 4.5)
+instance_shader_parameters/Exterior = Color(0.323437, 0.47877437, 0.20776868, 1)

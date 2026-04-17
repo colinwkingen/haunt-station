@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3vm0v1p8o1gh"]
 
-[ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/basic_container.gd" id="1_1o28y"]
+[ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/container.gd" id="1_1o28y"]
 [ext_resource type="PackedScene" uid="uid://diw3yslhi2pyn" path="res://assets/ShippingContainer/Scenes/Containers/shipping_crate_8.tscn" id="3_xx8e3"]
 
 [node name="BasicContainer1" type="Node3D" unique_id=811997654 node_paths=PackedStringArray("container_name_label")]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bjik3rqg8qb2l"]
 
-[ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/basic_container.gd" id="1_bj154"]
+[ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/container.gd" id="1_bj154"]
 [ext_resource type="MeshLibrary" uid="uid://dkif60knyc34n" path="res://station/tiles/station-walls.tres" id="1_vdjen"]
 
 [node name="BasicContainer1" type="Node3D" unique_id=811997654 node_paths=PackedStringArray("container_name_label")]
