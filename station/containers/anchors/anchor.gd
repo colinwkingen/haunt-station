@@ -21,4 +21,8 @@ func set_container(container: ShipContainer):
 	last_container_id = container_id
 	container_id = container.container_id
 	container_node = container
+	_set_container_location_to_anchor_location(container)
+
+func _set_container_location_to_anchor_location(container: Node3D) -> void:
+	container.set_position(get_position())
 	

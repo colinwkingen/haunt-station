@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dex30ltpoamr0"]
+
+[ext_resource type="MeshLibrary" uid="uid://d0kh00ywmpydi" path="res://assets/sci-fi-like Asset/scenes/GridMaps/Walls.tres" id="1_d74ld"]
+
+[node name="Station" type="Node3D" unique_id=1958024173]
+
+[node name="GridMap" type="GridMap" parent="." unique_id=953767462]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+mesh_library = ExtResource("1_d74ld")
+cell_scale = 0.25

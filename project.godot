@@ -65,6 +65,7 @@ folder_colors={
 
 Anchor=""
 ContainerManager=""
+AnchorManager=""
 
 [gui]
 

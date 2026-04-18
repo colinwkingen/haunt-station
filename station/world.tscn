@@ -91,7 +91,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.8,
 script = ExtResource("7_4inqu")
 container_data_array = Array[ExtResource("8_xqwbx")]([ExtResource("9_ctv1g"), ExtResource("10_kiymc"), ExtResource("11_h7gbq"), ExtResource("12_l0uss")])
 
-[node name="AnchorManager" type="Node3D" parent="." unique_id=1921631212]
+[node name="AnchorManager" type="Node3D" parent="." unique_id=1921631212 groups=["AnchorManager"]]
 script = ExtResource("14_u7gto")
 metadata/_custom_type_script = "uid://dnwgcdyvw8lt3"
 

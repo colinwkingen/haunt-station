@@ -5,24 +5,16 @@ signal container_swap_finished
 
 @export var container_data_array: Array[ContainerData]
 
-static var current_container_index: int = -1
-
-static var is_switching: bool = false
-
-# we should decouple these, to blueprints (data) and 
-static var container_data_by_id: Dictionary[int, ContainerData]
-static var container_instances_by_id: Dictionary[int, Node3D]
-
+var is_switching: bool = false
+var container_data_by_id: Dictionary[int, ContainerData]
+var container_instances_by_id: Dictionary[int, Node3D]
 var containers_initialized: bool = false
 
+var anchor_manager: AnchorManager
+
 func _ready() -> void:
+	anchor_manager = get_tree().get_first_node_in_group("AnchorManager")
 	_initialize_containers()
-	# we want to back away from the idea of "current container"
-	# there should be many containers, some fixed and some generic.
-	# an anchor starts with NO container, and rotating grabs the "next" one randomly.
-	# we also keep track of "last" for a given anchor
-	stage_current_container()
-	set_current_container_to_anchor(1)
 
 func _initialize_containers() -> void:
 	if containers_initialized:
@@ -45,13 +37,6 @@ func purge_containers() -> void:
 	container_instances_by_id.clear()
 	container_data_by_id.clear()
 	
-
-func stage_current_container() -> void:
-	if current_container_index == -1 and num_container_data() > 0:
-		current_container_index = 0
-	print("current index: %s and container data size: %s " %\
-	 	[current_container_index, num_container_data()])
-	stage_container(current_container_index)
 
 func get_or_create_container(container_id: int) -> ShipContainer:
 	if  container_instances_by_id.has(container_id) and container_instances_by_id[container_id]:
@@ -82,11 +67,6 @@ func stage_container(container_index: int) -> void:
 	else:
 		print("stage_container: no container was provided")
 	
-func unstage_current_container() -> void:
-	if get_current_container():
-		unstage_container(get_current_container())
-	else:
-		print("unstage_current_container: no current container was found")
 		
 func unstage_container(container: Node3D) -> void:
 	if container:
@@ -96,14 +76,6 @@ func unstage_container(container: Node3D) -> void:
 	else:
 		print("unstage_container: no container was provided")
 	
-func get_current_container() -> Node3D:
-	
-	if container_instances_by_id.has(current_container_index):
-		return container_instances_by_id[current_container_index]
-	else:
-		print("there is no current container")
-	
-	return get_or_create_container(current_container_index)
 
 func get_anchors() -> Array[Node]:
 	var anchors = get_tree().get_nodes_in_group("Anchor")
@@ -122,36 +94,21 @@ func get_anchor_by_id(target_id: int) -> Node:
 func num_container_data() -> int:
 	return container_data_by_id.keys().size()
 	
-func set_current_container_to_anchor(anchor_id: int) -> void:
-	if anchor_id == null:
-		print("did not provide and anchor_id to set_current_container_to_anchor")
-	if get_current_container():
-		var anchor = get_anchor_by_id(anchor_id)
-		if anchor:
-			var container = get_current_container()
-			anchor.container_node = container
-			_set_container_location_to_anchor_location(container, anchor)
-		else:
-			print("no anchor with id %s could be found" % anchor_id)
-	else:
-		print("tried to set_current_container_to_anchor but there is no current_container")
-	
-func _set_container_location_to_anchor_location(container: Node3D, anchor: Node3D) -> void:
-	container.set_position(anchor.get_position())
+
+# need to add stage last, and check already staged by other anchors
 
 func rotate_containers(anchor_id: int) -> void:
-	print("rotate is unstaging %s" % current_container_index)
-	if get_current_container():
-		unstage_container(get_current_container())
-	if current_container_index < (num_container_data()-1):
-		current_container_index +=1
+	var anchor: Anchor = anchor_manager.get_anchor_with_id(anchor_id)
+	if anchor.container_node:
+		unstage_container(anchor.container_node)
+	if anchor.container_id < (num_container_data()-1):
+		anchor.container_id += 1
 	else: 
-		current_container_index = 0
-	
-	print("with num_container_data=%s we are attempting to stage new index %s" % [num_container_data(), current_container_index])	
-	
-	stage_current_container()
-	set_current_container_to_anchor(anchor_id)
+		anchor.container_id = 0
+	#print("with num_container_data=%s we are attempting to stage new index %s" % [num_container_data(), current_container_index])	
+	var container: ShipContainer = get_or_create_container(anchor.container_id)
+	stage_container(anchor.container_id)
+	anchor.set_container(container)
 
 
 func rotate_containers_async(anchor_id: int) -> void:
