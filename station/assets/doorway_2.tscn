@@ -1,11 +1,23 @@
 [gd_scene format=3 uid="uid://dqpofcx3t21n5"]
 
 [ext_resource type="PackedScene" uid="uid://1gljeun6t54f" path="res://station/assets/doorway2.blend" id="1_7nhe4"]
+[ext_resource type="Script" uid="uid://bvwn1hipisvpx" path="res://station/assets/doorway.gd" id="2_1k7py"]
+[ext_resource type="PackedScene" uid="uid://nioe4i6iyhxn" path="res://station/assets/steel_door_2.tscn" id="2_a0k0f"]
+[ext_resource type="Script" uid="uid://cismjpvxmsbf2" path="res://addons/cogito/CogitoObjects/cogito_door.gd" id="3_1ruju"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7nhe4"]
 size = Vector3(0.5, 0.25, 2)
 
-[node name="doorway2" unique_id=857429570 instance=ExtResource("1_7nhe4")]
+[node name="Doorway" unique_id=857429570 groups=["Doorway"] instance=ExtResource("1_7nhe4")]
+script = ExtResource("2_1k7py")
+required_power = 8
+required_colors = Array[String](["Blue", "Red"])
+
+[node name="frame-outer" parent="." index="0" unique_id=341671160]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.9, -0.1, 1.25, 0)
+
+[node name="frame-inner" parent="." index="1" unique_id=1156180509]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 0.9, -0.4, 1.25, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="3" unique_id=1087298469]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -13,3 +25,13 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0" unique_id=996659761]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.5084367, 0, 0)
 shape = SubResource("BoxShape3D_7nhe4")
+
+[node name="SteelDoor" parent="." index="4" unique_id=302010356 groups=["SteelDoor"] instance=ExtResource("2_a0k0f")]
+transform = Transform3D(-3.934025e-08, 0, 0.9, 0, 0.85, 0, -0.9, 0, -3.934025e-08, -0.275, 0.15, 0)
+script = ExtResource("3_1ruju")
+door_type = 1
+open_position = Vector3(0, 0, -2)
+door_speed = 1.5
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SteelDoor" index="1" unique_id=1003874589]
+transform = Transform3D(-4.3711392e-08, 0, -1, 0, 1.234568, 0, 1, 0, -4.3711392e-08, -1.0927848e-08, 0, 0.25)

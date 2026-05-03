@@ -15,4 +15,7 @@ light_size = 4.0
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." index="1" unique_id=626652038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+light_color = Color(0.9194371, 0.91293526, 0.8877862, 1)
 light_energy = 0.75
+light_indirect_energy = 0.75
+light_volumetric_fog_energy = 0.75

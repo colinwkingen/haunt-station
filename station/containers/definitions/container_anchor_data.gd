@@ -8,4 +8,4 @@ extends Resource
 
 @export_category("Attributes")
 @export var anchor_name: String
-@export var anchor_id: int
+@export var anchor_id: int = -1

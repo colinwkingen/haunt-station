@@ -66,6 +66,7 @@ folder_colors={
 Anchor=""
 ContainerManager=""
 AnchorManager=""
+GlobalStationState=""
 
 [gui]
 

@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://kgswdskhaljk"]
+
+[ext_resource type="PackedScene" uid="uid://dietqk7l7wj16" path="res://assets/ShippingContainer/Scenes/Containers/shipping_crate_3.tscn" id="1_dda2u"]
+[ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/container.gd" id="1_vjwsq"]
+
+[node name="ShippingContainer3" type="Node3D" unique_id=955372250 node_paths=PackedStringArray("container_label", "indicator_light")]
+script = ExtResource("1_vjwsq")
+container_label = NodePath("LabelContainerName")
+indicator_light = NodePath("IndicatorLight")
+
+[node name="ShippingCrate_3" parent="." unique_id=1608749541 instance=ExtResource("1_dda2u")]
+transform = Transform3D(-1.1802075e-07, 0, -2.7, 0, 2.7, 0, 2.7, 0, -1.1802075e-07, 0, 1, 0.5)
+
+[node name="LabelContainerName" type="Label3D" parent="." unique_id=1649376765]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, -1)
+text = "placeholder"
+
+[node name="IndicatorLight" type="OmniLight3D" parent="." unique_id=1991021824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0322042, -1.6168747)

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ContainerData" format=3 uid="uid://btr6h3wo8ohph"]
+
+[ext_resource type="PackedScene" uid="uid://kgswdskhaljk" path="res://station/containers/variants/shipping_container_3.tscn" id="1_jqh7v"]
+[ext_resource type="Script" uid="uid://cc5ul5xn7b30w" path="res://station/containers/definitions/container_data.gd" id="1_s2pdi"]
+
+[resource]
+script = ExtResource("1_s2pdi")
+container_name = "Jeff"
+container_scene = ExtResource("1_jqh7v")
+metadata/_custom_type_script = "uid://cc5ul5xn7b30w"

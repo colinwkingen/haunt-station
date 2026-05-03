@@ -15,7 +15,6 @@ func _ready() -> void:
 	duration = 1.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-@warning_ignore("unused_parameter")
 func _process(delta: float) -> void:
 	pass
 
@@ -28,7 +27,6 @@ func close_door_async() -> void:
 		closed.emit()
 		return
 	is_moving = true
-	print("closing door..")
 	var tween = create_tween()
 	tween.tween_property(self, "position", target_position, duration)\
 	.set_trans(Tween.TRANS_SINE)\
@@ -46,7 +44,6 @@ func open_door_async() -> void:
 		opened.emit()
 		return
 	is_moving = true
-	print("opening door..")
 	var tween = create_tween()
 	tween.tween_property(self, "position", start_position, duration)\
 	.set_trans(Tween.TRANS_SINE)\

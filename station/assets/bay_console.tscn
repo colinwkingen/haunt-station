@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dr8gt3tk8oinv"]
+
+[ext_resource type="PackedScene" uid="uid://cfwt1mfj1jtlf" path="res://station/assets/bay-console.blend" id="1_oa1br"]
+
+[node name="bay-console" unique_id=299674391 instance=ExtResource("1_oa1br")]

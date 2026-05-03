@@ -1,10 +1,96 @@
 [gd_scene format=3 uid="uid://dex30ltpoamr0"]
 
-[ext_resource type="MeshLibrary" uid="uid://d0kh00ywmpydi" path="res://assets/sci-fi-like Asset/scenes/GridMaps/Walls.tres" id="1_d74ld"]
+[ext_resource type="MeshLibrary" uid="uid://jbhqrtxqoudg" path="res://assets/walls.tres" id="1_d74ld"]
+[ext_resource type="PackedScene" uid="uid://cfhywen8yyhi2" path="res://station/assets/simple_station_light.tscn" id="2_4gatj"]
+[ext_resource type="PackedScene" uid="uid://dr8gt3tk8oinv" path="res://station/assets/bay_console.tscn" id="3_aygmc"]
+[ext_resource type="Script" uid="uid://b51d2rud0k0sa" path="res://station/big_board.gd" id="4_40u6s"]
+[ext_resource type="PackedScene" uid="uid://dqpofcx3t21n5" path="res://station/assets/doorway_2.tscn" id="5_6tyk4"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aygmc"]
+size = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aygmc"]
+albedo_color = Color(0.02617561, 0.026175609, 0.026175609, 1)
 
 [node name="Station" type="Node3D" unique_id=1958024173]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="GridMap" type="GridMap" parent="." unique_id=953767462]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1529797154]
+
+[node name="GridFloor" type="GridMap" parent="." unique_id=105687899]
+transform = Transform3D(0.667, 0, 0, 0, 0.667, 0, 0, 0, 0.667, 0, -1, 0)
 mesh_library = ExtResource("1_d74ld")
-cell_scale = 0.25
+cell_size = Vector3(6, 6, 6)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 1, 655390, 0, 0, 1048606, 1, 0, 30, 1, 1, 1441822, 65535, 1, 1441822, 65534, 1, 655390, 65534, 0, 1048606, 65535, 0, 30, 0, 65535, 1048603, 0, 65534, 76, 65535, 65534, 31, 1, 65534, 31, 65534, 65534, 31, 65533, 65534, 31, 65533, 65533, 31, 65534, 65533, 31, 65535, 65533, 31, 0, 65533, 31, 1, 65533, 31, 65532, 65533, 655391, 65532, 65534, 655391, 65532, 65532, 1048684, 65533, 65532, 1048684, 1, 65532, 1048684, 0, 65532, 1048684, 65535, 65532, 1048684, 65534, 65532, 1048684, 65531, 65533, 655391, 65530, 65533, 31, 65529, 65533, 31, 65530, 65534, 108, 65529, 65534, 108, 65529, 65532, 108, 65530, 65532, 108, 2, 65533, 1441900, 3, 65533, 1441900, 3, 65532, 1441900, 4, 65532, 1441900, 4, 65533, 1441900, 4, 65534, 1441900, 3, 65534, 1441900)
+}
+
+[node name="GridWall" type="GridMap" parent="." unique_id=1225180372]
+transform = Transform3D(0.667, 0, 0, 0, 0.667, 0, 0, 0, 0.667, 0, -1, 0)
+mesh_library = ExtResource("1_d74ld")
+cell_size = Vector3(6, 6, 6)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(1, 1, 655392, 65534, 1, 1048608, 0, 65535, 55, 65535, 65535, 655388, 65534, 0, 32, 1, 0, 40, 1, 65534, 1441832, 65534, 65534, 655388, 65535, 65534, 655388, 65535, 1, 655404, 0, 1, 655404, 65533, 65534, 655388, 65532, 65534, 655400, 65532, 65532, 1048604, 2, 65532, 1048604, 65534, 65532, 1048604, 0, 65532, 1048604, 65531, 65533, 655388, 65531, 65532, 655388, 65532, 65533, 1048625, 65530, 65534, 655426, 65530, 65532, 1441858, 65529, 65532, 66, 65529, 65534, 1048642, 65529, 65533, 1048621, 2, 65533, 1048631, 3, 65534, 1048648, 3, 65532, 72, 4, 65532, 1441864, 4, 65534, 655432, 4, 65533, 1441836)
+}
+
+[node name="GridProps" type="GridMap" parent="." unique_id=980995609]
+transform = Transform3D(0.667, 0, 0, 0, 0.667, 0, 0, 0, 0.667, 0, -1, 0)
+mesh_library = ExtResource("1_d74ld")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(0, 0, 655408, 5, 0, 655408, 65530, 11, 655408, 5, 11, 1048624, 5, 12, 1048624, 65530, 12, 1048624, 65524, 65517, 48, 65523, 65517, 48, 65512, 65517, 48, 65535, 65517, 48, 0, 65517, 48, 11, 65517, 48)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="Lights" type="Node" parent="." unique_id=1243145250]
+
+[node name="SimpleLightMainRoom1" parent="Lights" unique_id=1934987496 instance=ExtResource("2_4gatj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 3.9999998, 2.66, -4.0000005)
+
+[node name="SimpleLightMainRoom2" parent="Lights" unique_id=2038620074 instance=ExtResource("2_4gatj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.0000005, 2.66, -3.9999998)
+
+[node name="SimpleLightDockingBay1" parent="Lights" unique_id=1284260847 instance=ExtResource("2_4gatj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.0000005, 2.66, 8.011761)
+
+[node name="SimpleLightDockingBay2" parent="Lights" unique_id=1415427657 instance=ExtResource("2_4gatj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 6.993822e-07, 2.66, 8)
+
+[node name="SimpleLightDockingBay3" parent="Lights" unique_id=2042944134 instance=ExtResource("2_4gatj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4.0000005, 2.66, 7.9999995)
+
+[node name="SimpleLightDockingBay4" parent="Lights" unique_id=1633848237 instance=ExtResource("2_4gatj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8.000001, 2.66, 7.9999995)
+
+[node name="SimpleLightDockingBay5" parent="Lights" unique_id=1367727631 instance=ExtResource("2_4gatj")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12, 2.66, 8)
+
+[node name="bay-console" parent="." unique_id=299674391 instance=ExtResource("3_aygmc")]
+transform = Transform3D(-3.934025e-08, 0, -0.9, 0, 0.9, 0, 0.9, 0, -3.934025e-08, -3, -1, -7.5)
+
+[node name="BigBoard" type="Node3D" parent="." unique_id=1725112383 groups=["BigBoard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -11.97)
+script = ExtResource("4_40u6s")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BigBoard" unique_id=968715474]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_aygmc")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_aygmc")
+
+[node name="BoardText" type="Label3D" parent="BigBoard" unique_id=76318165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001)
+modulate = Color(0.5395237, 0.8055557, 0, 1)
+text = "Foo Bar Baz"
+
+[node name="Door1" parent="." unique_id=857429570 instance=ExtResource("5_6tyk4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.004848, -1, -10)
+required_power = 13
+required_colors = Array[String]([])
+
+[node name="Door2" parent="." unique_id=1095269818 instance=ExtResource("5_6tyk4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -1, -10)
+required_colors = Array[String](["BLUE", "RED"])

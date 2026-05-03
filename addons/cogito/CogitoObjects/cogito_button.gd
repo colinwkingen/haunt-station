@@ -8,6 +8,8 @@ signal damage_received(damage_value:float)
 
 @export var display_name : String
 
+@export var button_color: Color = Color.GREEN
+
 enum PromptPositionMode{
 	ORIGIN, ## at the objects origin point. Recommended for smaller objects.
 	MARKER, ## at the position of an assigned Marker3D node. Will throw an error if no marker is assigned. Recommended for big objects/doors.
@@ -62,6 +64,7 @@ func _ready() -> void:
 		interaction_text = usable_interaction_text
 	object_state_updated.emit(interaction_text)
 	find_cogito_properties()
+	set_color()
 
 
 func find_cogito_properties():
@@ -154,6 +157,10 @@ func set_state():
 	
 	object_state_updated.emit(interaction_text)
 
+func set_color() -> void:
+	for child in get_children():
+		if child.is_in_group("ButtonColorMesh"):
+			child.set_color(button_color)
 
 func save():
 	var state_dict = {

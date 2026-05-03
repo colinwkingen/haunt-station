@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dohpdn3hnc12v" path="res://addons/cogito/CogitoObjects/cogito_button.gd" id="1_85pre"]
 [ext_resource type="AudioStream" uid="uid://b6wdy2102jymr" path="res://addons/cogito/Assets/Audio/Kenney/UiAudio/switch2.ogg" id="2_23wsq"]
+[ext_resource type="Script" uid="uid://b5r33dbguuul6" path="res://station/assets/button_mesh.gd" id="3_liy11"]
 [ext_resource type="PackedScene" uid="uid://l61jtpfxu5x5" path="res://addons/cogito/Components/Interactions/BasicInteraction.tscn" id="3_v7odi"]
 [ext_resource type="PackedScene" uid="uid://k28yrbg3k3pw" path="res://addons/cogito/Components/HitboxComponent.tscn" id="4_a7nw4"]
 [ext_resource type="PackedScene" uid="uid://cj0yaeh3yg7tu" path="res://addons/cogito/Components/Properties/CogitoProperties.tscn" id="5_f0nva"]
@@ -30,10 +31,11 @@ script = ExtResource("1_85pre")
 press_sound = ExtResource("2_23wsq")
 press_cooldown_time = 1.0
 
-[node name="ButtonMesh_off" type="MeshInstance3D" parent="." unique_id=1188133677]
+[node name="ButtonMesh_off" type="MeshInstance3D" parent="." unique_id=1188133677 groups=["ButtonColorMesh"]]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_clo4d")
 surface_material_override/0 = SubResource("StandardMaterial3D_3kl6m")
+script = ExtResource("3_liy11")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=319128848]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.05, 0, 0)
