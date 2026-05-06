@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://db1hmlbj5l483" path="res://station/assets/wall_button.tscn" id="6_cdkcl"]
 [ext_resource type="Script" uid="uid://jk6cp4oe2gn6" path="res://station/containers/anchors/anchor.gd" id="10_xqwbx"]
 [ext_resource type="Script" uid="uid://cjpgxsaekjusf" path="res://station/containers/definitions/container_anchor_data.gd" id="11_ctv1g"]
+[ext_resource type="PackedScene" uid="uid://b05od7urmjmru" path="res://station/assets/wall_button2.tscn" id="12_kiymc"]
 [ext_resource type="PackedScene" uid="uid://1587lfmswgt6" path="res://station/assets/doors/bay_door_blue.tscn" id="14_c2gt3"]
 [ext_resource type="Script" uid="uid://bwwrcdxxgvbk7" path="res://station/assets/doors/bay_door.gd" id="15_l0uss"]
 [ext_resource type="PackedScene" uid="uid://clvt6jjjdkcon" path="res://station/assets/doors/bay_door_green.tscn" id="17_78cmj"]
@@ -102,6 +103,9 @@ anchor_number = 3
 
 [node name="CogitoButton" parent="Anchors/AnchorButtons/NextContainerButton3" unique_id=239927651 instance=ExtResource("6_cdkcl")]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999995, 0, 0.9999995, 0, 0.9999999, 0, -4.3711367e-08, 0, 0, 0)
+
+[node name="GenericButton" parent="." unique_id=361333411 instance=ExtResource("12_kiymc")]
+transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 18.340338, 0.598248, 9.966211)
 
 [connection signal="pressed" from="Anchors/AnchorButtons/NextContainerButton1/CogitoButton" to="Anchors/AnchorButtons/NextContainerButton1" method="_on_cogito_button_pressed"]
 [connection signal="pressed" from="Anchors/AnchorButtons/PreviousContainerButton1/CogitoButton" to="Anchors/AnchorButtons/PreviousContainerButton1" method="_on_cogito_button_pressed"]

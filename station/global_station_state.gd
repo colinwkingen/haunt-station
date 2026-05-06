@@ -1,7 +1,7 @@
 class_name GlobalStationState
 extends Node
 
-signal update_bigboard(power: int, colors: String)
+signal update_bigboard(power_by_sector: Dictionary)
 
 
 var anchor_manager: AnchorManager
@@ -11,11 +11,11 @@ var total_power: int = 0
 var total_colors: Array[String]
 
 var power_by_sector: Dictionary[String,int] = {
-	"engineering": 0,
-	"habitat": 0,
-	"waste_processing": 0,
-	"docking": 0,
-	"operations": 0
+	"ENGINEERING": 0, # Yellow
+	"HABITAT": 0, # Green
+	"WASTE_PROCESSING": 0, # Purple
+	"DOCKING": 0, # Red
+	"OPERATIONS": 0 # Blue
 }
 
 # 1. Instead of separate power and colors, we will have power per color
@@ -37,6 +37,7 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("BigBoard"):
 		var bigboard: BigBoard = node
 		bigboard.initialize()
+	SignalBus.connect("_breaker_flipped", update_sector_power)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,14 +47,20 @@ func _process(delta: float) -> void:
 
 func _add_container_atts(container_data: ContainerData) -> void:
 	total_power += container_data.power_level
-	total_colors.append(container_data.color)
-	update_bigboard.emit(total_power, get_colors_str())
+	#total_colors.append(container_data.sector)
+	
+	power_by_sector[container_data.sector] += container_data.power_level
+	
+	update_bigboard.emit(power_by_sector)
 	inform_doors_of_update()
 
 func _remove_container_atts(container_data: ContainerData) -> void:
 	total_power -= container_data.power_level
-	total_colors.erase(container_data.color)
-	update_bigboard.emit(total_power, get_colors_str())
+	#total_colors.erase(container_data.color)
+	
+	power_by_sector[container_data.sector] += container_data.power_level
+	
+	update_bigboard.emit(power_by_sector)
 	inform_doors_of_update()
 	
 func get_colors_str() -> String:
@@ -78,5 +85,7 @@ func get_door_requirement_dict() -> Dictionary:
 	}
 	
 	
-	
+func update_sector_power(sector: String, value: int) -> void:
+	power_by_sector[sector] += value
+	update_bigboard.emit(power_by_sector)
 	

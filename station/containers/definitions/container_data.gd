@@ -6,27 +6,35 @@ extends Resource
 enum OPEN_STATE {OPEN, CLOSED}
 enum POWER_STATE {ON,OFF,BROKEN}
 
-var COLORS: Array[String] = ["RED", "YELLOW", "GREEN", "BLUE", "PURPLE"]
+var SECTORS: Array[String] = ["DOCKING", "ENGINEERING", "HABITAT", "OPERATIONS", "WASTE_PROCESSING"]
 
-var power_max: int = 10
+
+#var power_by_sector: Dictionary[String,int] = {
+	#"engineering": 0, # Yellow
+	#"habitat": 0, # Green
+	#"waste_processing": 0, # Purple
+	#"docking": 0, # Red 
+	#"operations": 0 # Blue
+#}
+
+var power_max: int = 25
 
 @export_category("State")
 @export var opened: bool = false
 @export var open_state: OPEN_STATE
 @export var power_state: POWER_STATE
-@export var color: String
-@export var power_level: int
+@export var sector: String
+@export var power_level: int = 1
 
 @export_category("Attributes")
-@export var container_name: String = "Mr. Container"
+@export var container_name: String = "Power Module #"
 @export var container_scene: PackedScene
 
 func initialize(id: int) -> void:
 	open_state = OPEN_STATE.values().pick_random()
 	power_state = POWER_STATE.values().pick_random()
-	color = COLORS.pick_random()
+	sector = SECTORS.pick_random()
 	container_name = container_name + " #%s" % id
-	power_level = randi_range(0, power_max)
 	
 	
 func get_power_str() -> String:
@@ -48,16 +56,16 @@ func get_open_str() -> String:
 	return "Error"
 	
 func get_color_obj() -> Color:
-	match color:
-		"BLUE":
+	match sector:
+		"OPERATIONS":
 			return Color.BLUE
-		"RED":
+		"DOCKING":
 			return Color.RED
-		"YELLOW":
+		"ENGINEERING":
 			return Color.YELLOW
-		"GREEN":
+		"HABITAT":
 			return Color.GREEN
-		"PURPLE":
+		"WASTE_PROCESSING":
 			return Color.PURPLE
 	return Color.WHEAT
 		

@@ -1,19 +1,22 @@
 [gd_scene format=3 uid="uid://dex30ltpoamr0"]
 
+[ext_resource type="Script" uid="uid://b5vgj6wmwlfie" path="res://station/power_consumers/power_breaker.gd" id="1_5m2gh"]
 [ext_resource type="MeshLibrary" uid="uid://jbhqrtxqoudg" path="res://assets/walls.tres" id="1_d74ld"]
 [ext_resource type="PackedScene" uid="uid://cfhywen8yyhi2" path="res://station/assets/simple_station_light.tscn" id="2_4gatj"]
 [ext_resource type="PackedScene" uid="uid://dr8gt3tk8oinv" path="res://station/assets/bay_console.tscn" id="3_aygmc"]
 [ext_resource type="Script" uid="uid://b51d2rud0k0sa" path="res://station/big_board.gd" id="4_40u6s"]
 [ext_resource type="PackedScene" uid="uid://dqpofcx3t21n5" path="res://station/assets/doorway_2.tscn" id="5_6tyk4"]
+[ext_resource type="PackedScene" uid="uid://b05od7urmjmru" path="res://station/assets/wall_button2.tscn" id="7_wblh0"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_aygmc"]
-size = Vector2(1, 1)
+size = Vector2(1.3, 1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aygmc"]
 albedo_color = Color(0.02617561, 0.026175609, 0.026175609, 1)
 
 [node name="Station" type="Node3D" unique_id=1958024173]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_5m2gh")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1529797154]
 
@@ -82,15 +85,26 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_aygmc")
 
 [node name="BoardText" type="Label3D" parent="BigBoard" unique_id=76318165]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.001)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0.001)
 modulate = Color(0.5395237, 0.8055557, 0, 1)
-text = "Foo Bar Baz"
+text = "No Data"
+font_size = 24
+horizontal_alignment = 0
+justification_flags = 162
 
 [node name="Door1" parent="." unique_id=857429570 instance=ExtResource("5_6tyk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.004848, -1, -10)
-required_power = 13
-required_colors = Array[String]([])
+required_power = 2
 
 [node name="Door2" parent="." unique_id=1095269818 instance=ExtResource("5_6tyk4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -1, -10)
-required_colors = Array[String](["BLUE", "RED"])
+required_power = 2
+
+[node name="PowerBreaker" type="Node3D" parent="." unique_id=1572937089]
+script = ExtResource("1_5m2gh")
+metadata/_custom_type_script = "uid://b5vgj6wmwlfie"
+
+[node name="BreakerSwitch" parent="PowerBreaker" unique_id=1679353221 groups=["BreakerSwitch"] instance=ExtResource("7_wblh0")]
+transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, -11.161517, 1.0821533, -8.034573)
+
+[connection signal="pressed" from="PowerBreaker/BreakerSwitch" to="PowerBreaker" method="_on_breaker_switch_pressed"]

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ca2g1nfby7dea"]
+
+[ext_resource type="PackedScene" uid="uid://cyg5l0t62mp7k" path="res://station/assets/on_off_switch.blend" id="1_jgobu"]
+
+[node name="on_off_switch" unique_id=531157779 instance=ExtResource("1_jgobu")]

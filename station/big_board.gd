@@ -15,5 +15,17 @@ func initialize() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _update_power(new_level: int, color_str: String) -> void:
-	$BoardText.text = "Power: %s \n Colors: %s" % [new_level, color_str]
+func _update_power(power_by_sector: Dictionary[String,int]) -> void:
+	
+	var total_power: int
+	for value in power_by_sector.values():
+		total_power += value
+	
+	
+	var board_update: String = "Total Power: %s\n" % total_power
+	
+	for key in power_by_sector.keys():
+		board_update += "%s: %s\n" % [key, power_by_sector[key]]
+		
+	
+	$BoardText.text = board_update

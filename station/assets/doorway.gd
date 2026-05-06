@@ -4,7 +4,9 @@ extends Node3D
 # establish requirements for opening
 
 @export var required_power: int
-@export var required_colors: Array[String]
+# it only makes sense to have one at this point, but we already built 
+# it to allow multiple so why redo it
+@export var required_sectors: Array[String]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +22,7 @@ func open_requirements_met(current_state: Dictionary) -> bool:
 	print("open requirements check got current state: %s" % current_state)
 	if current_state.total_power >= required_power:
 		print("power requirement met ..")
-		for color in required_colors:
+		for color in required_sectors:
 			color.to_upper()
 			print("checking color %s" % color)
 			if current_state.total_colors.has(color):

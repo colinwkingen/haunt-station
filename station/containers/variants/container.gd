@@ -40,7 +40,7 @@ func set_container_data(data: ContainerData) -> void:
 func _generate_label() -> void:
 	container_label.text = ""
 	_label_append_line("Name: ", container_data.container_name)
-	_label_append_line("Color: ", container_data.color)
+	_label_append_line("Color: ", container_data.sector)
 	_label_append_line("Open State: ", container_data.get_open_str())
 	_label_append_line("Power State: ", container_data.get_power_str())
 	_label_append_line("Power Level: ", container_data.power_level)
