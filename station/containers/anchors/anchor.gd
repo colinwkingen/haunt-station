@@ -10,15 +10,16 @@ signal remove_docked_container_atts(container: ShipContainer)
 var container_node: ShipContainer
 var container_id: int
 var is_switching: bool
-var container_manager: ContainerManager
-var anchor_manager: AnchorManager
+@onready var container_manager: ContainerManager = get_tree().get_first_node_in_group("ContainerManager")
+@onready var anchor_manager: AnchorManager = get_tree().get_first_node_in_group("AnchorManager")
 # may not just be the previous int
 #var last_container_id: int
 var container_id_history: Array[int]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	container_manager = get_tree().get_first_node_in_group("ContainerManager")
-	anchor_manager = get_tree().get_first_node_in_group("AnchorManager")
+	anchor_id = anchor_manager.register_anchor_and_get_id(self)
+	if anchor_id == -1:
+		print("error! got a -1 id for this anchor")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,12 +34,32 @@ func set_container(container: ShipContainer):
 	_set_container_location_to_anchor_location(container)
 	
 
-func _set_container_location_to_anchor_location(container: Node3D) -> void:
-	container.set_position(get_position())
+func _set_container_location_to_anchor_location(container: ShipContainer) -> void:
 	
+	#This is the local top node3d, the container
+	var current_container = get_tree().get_first_node_in_group("Container")
+	print("got current_container? %s"%current_container)
+	print("got new container? : %s"%container)
+	
+	# this is the anchor's position from the origin of the container-
+	# -1 or +1 on an axis
+	var local_offset: Vector3 = position.normalized()
+	print("new container width? %s"%container.container_width)
+	# Transform local offset to world space using container's rotation
+	print("local offset? %s"%local_offset)
+	
+	# since the other axis are zero, the hardcoded offset shoud tell
+	# us where to place the new container, relative to the anchor
+	var world_offset = container.container_width * local_offset
+	
+	print("world offset? %s"%world_offset)
+	# Position new container as sibling with the offset applied
+	container.set_position(world_offset)
+	container.rotation = current_container.rotation
 	
 func dock_next_container() -> void:
 	var container: ShipContainer = container_manager.get_next_available_container(container_id)
+	print("got next available container? : %s"%container)
 	if container:
 		if container_node:
 			remove_docked_container_atts.emit(container_node.container_data)
@@ -73,7 +94,6 @@ func container_rotate_button_pressed(forward: bool) -> void:
 		return
 	is_switching = true
 	var bay_door: Node3D
-	#var anchor = anchor_manager.get_anchor_with_id(anchor_id)
 	for node in get_children():
 		if node.is_in_group("BayDoor"):
 			bay_door = node

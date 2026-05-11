@@ -6,5 +6,6 @@
 [resource]
 script = ExtResource("1_s2pdi")
 container_name = "Jeff"
+container_width = 12
 container_scene = ExtResource("1_jqh7v")
 metadata/_custom_type_script = "uid://cc5ul5xn7b30w"

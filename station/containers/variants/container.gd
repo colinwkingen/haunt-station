@@ -5,13 +5,19 @@ extends Node3D
 
 var container_id: int
 
-var container_data: ContainerData
+# the properties of the container should live in the container_data
+# only logic goes in the container itself
+@export var container_data: ContainerData
+
+# what are you doig here?
+@export var container_width: int
 
 @export var indicator_light: OmniLight3D
 
 func _ready() -> void:
-	indicator_light.light_color = container_data.get_color_obj()
-	
+	# the containers must have consistent children, and explicitly allow for missing ones
+	if indicator_light:
+		indicator_light.light_color = container_data.get_color_obj()
 	pass
 	 # Replace with function body.
 
@@ -36,14 +42,20 @@ func set_container_data(data: ContainerData) -> void:
 	container_data = data
 	_generate_label()
 	
+func generate_container_data() -> void:
+	container_data = ContainerData.new()
+	# we are doing index and id? oops? equivalent?
+	container_data.initialize(container_id)
+	
 
 func _generate_label() -> void:
-	container_label.text = ""
-	_label_append_line("Name: ", container_data.container_name)
-	_label_append_line("Color: ", container_data.sector)
-	_label_append_line("Open State: ", container_data.get_open_str())
-	_label_append_line("Power State: ", container_data.get_power_str())
-	_label_append_line("Power Level: ", container_data.power_level)
+	if container_label:
+		container_label.text = ""
+		_label_append_line("Name: ", container_data.container_name)
+		_label_append_line("Color: ", container_data.sector)
+		_label_append_line("Open State: ", container_data.get_open_str())
+		_label_append_line("Power State: ", container_data.get_power_str())
+		_label_append_line("Power Level: ", container_data.power_level)
 
 
 func _label_append_line(key, value) -> void:

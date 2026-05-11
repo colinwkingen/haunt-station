@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Cogito"
-run/main_scene="res://addons/cogito/DemoScenes/COGITO_0_MainMenu.tscn"
+run/main_scene="uid://c3y8dp3sfe753"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=120
 boot_splash/stretch_mode=0
@@ -68,6 +68,8 @@ Anchor=""
 ContainerManager=""
 AnchorManager=""
 GlobalStationState=""
+World=""
+Container=""
 
 [gui]
 

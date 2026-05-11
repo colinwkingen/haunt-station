@@ -19,17 +19,13 @@ func _process(delta: float) -> void:
 
 
 func open_requirements_met(current_state: Dictionary) -> bool:
-	print("open requirements check got current state: %s" % current_state)
+	#print("open requirements check got current state: %s" % current_state)
 	if current_state.total_power >= required_power:
-		print("power requirement met ..")
-		for color in required_sectors:
-			color.to_upper()
-			print("checking color %s" % color)
-			if current_state.total_colors.has(color):
-				print("had it!")
-				current_state.total_colors.erase(color)
-			else:
-				print("didn't have it")
+		#print("power requirement met ..")
+		for sector in required_sectors:
+			sector.to_upper()
+			if current_state.required_sectors.has(sector):
+				current_state.required_sectors.erase(sector)
 				return false
 		return true
 	return false

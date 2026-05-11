@@ -1,59 +1,68 @@
-[gd_scene format=3 uid="uid://db1hmlbj5l483"]
+[gd_scene format=3 uid="uid://0aog0yp3sugo"]
 
-[ext_resource type="Script" uid="uid://dohpdn3hnc12v" path="res://addons/cogito/CogitoObjects/cogito_button.gd" id="1_85pre"]
-[ext_resource type="AudioStream" uid="uid://b6wdy2102jymr" path="res://addons/cogito/Assets/Audio/Kenney/UiAudio/switch2.ogg" id="2_23wsq"]
-[ext_resource type="Script" uid="uid://b5r33dbguuul6" path="res://station/assets/button_mesh.gd" id="3_liy11"]
-[ext_resource type="PackedScene" uid="uid://l61jtpfxu5x5" path="res://addons/cogito/Components/Interactions/BasicInteraction.tscn" id="3_v7odi"]
-[ext_resource type="PackedScene" uid="uid://k28yrbg3k3pw" path="res://addons/cogito/Components/HitboxComponent.tscn" id="4_a7nw4"]
-[ext_resource type="PackedScene" uid="uid://cj0yaeh3yg7tu" path="res://addons/cogito/Components/Properties/CogitoProperties.tscn" id="5_f0nva"]
-[ext_resource type="PackedScene" uid="uid://6d6is2x1egew" path="res://addons/cogito/Components/CurrencyCheckComponent.tscn" id="6_c7s72"]
+[ext_resource type="Script" uid="uid://c5uytgaakvpcx" path="res://station/assets/doors/bay_door_rotate_container_button.gd" id="1_7725o"]
+[ext_resource type="Script" uid="uid://dohpdn3hnc12v" path="res://addons/cogito/CogitoObjects/cogito_button.gd" id="1_liy11"]
+[ext_resource type="AudioStream" uid="uid://b6wdy2102jymr" path="res://addons/cogito/Assets/Audio/Kenney/UiAudio/switch2.ogg" id="2_7725o"]
+[ext_resource type="PackedScene" uid="uid://l61jtpfxu5x5" path="res://addons/cogito/Components/Interactions/BasicInteraction.tscn" id="3_xfln6"]
+[ext_resource type="PackedScene" uid="uid://k28yrbg3k3pw" path="res://addons/cogito/Components/HitboxComponent.tscn" id="4_hey0k"]
+[ext_resource type="PackedScene" uid="uid://cj0yaeh3yg7tu" path="res://addons/cogito/Components/Properties/CogitoProperties.tscn" id="5_bmjwd"]
+[ext_resource type="PackedScene" uid="uid://6d6is2x1egew" path="res://addons/cogito/Components/CurrencyCheckComponent.tscn" id="6_w28a1"]
+[ext_resource type="Script" uid="uid://b5r33dbguuul6" path="res://station/assets/button_mesh.gd" id="7_liy11"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_clo4d"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_7725o"]
 top_radius = 0.05
 bottom_radius = 0.08
 height = 0.05
 radial_segments = 12
 rings = 1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kl6m"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xfln6"]
 albedo_color = Color(0, 1, 0.184314, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_o2wjq"]
+[sub_resource type="BoxMesh" id="BoxMesh_hey0k"]
 size = Vector3(0.2, 0.05, 0.2)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nti18"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bmjwd"]
 size = Vector3(0.150977, 0.069043, 0.147333)
 
-[node name="GenericButton" type="AnimatableBody3D" unique_id=1679353221]
+[node name="WallButton" type="Node3D" unique_id=1465050445]
+script = ExtResource("1_7725o")
+anchor_number = 1
+
+[node name="GenericButton" type="AnimatableBody3D" parent="." unique_id=1679353221]
 transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0)
 collision_layer = 3
-script = ExtResource("1_85pre")
-press_sound = ExtResource("2_23wsq")
+sync_to_physics = false
+script = ExtResource("1_liy11")
+display_name = "Button"
+button_color = Color(1, 0, 0, 1)
+press_sound = ExtResource("2_7725o")
 press_cooldown_time = 1.0
 
-[node name="ButtonMesh_off" type="MeshInstance3D" parent="." unique_id=1188133677 groups=["ButtonColorMesh"]]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_clo4d")
-surface_material_override/0 = SubResource("StandardMaterial3D_3kl6m")
-script = ExtResource("3_liy11")
+[node name="BasicInteraction" parent="GenericButton" unique_id=1306491245 instance=ExtResource("3_xfln6")]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=319128848]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.05, 0, 0)
-mesh = SubResource("BoxMesh_o2wjq")
+[node name="HitboxComponent" parent="GenericButton" unique_id=1351127466 instance=ExtResource("4_hey0k")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=547105650]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.05, 0, -0.002)
-shape = SubResource("BoxShape3D_nti18")
-
-[node name="BasicInteraction" parent="." unique_id=1306491245 instance=ExtResource("3_v7odi")]
-
-[node name="HitboxComponent" parent="." unique_id=1351127466 instance=ExtResource("4_a7nw4")]
-
-[node name="CogitoProperties" parent="." unique_id=907398228 instance=ExtResource("5_f0nva")]
+[node name="CogitoProperties" parent="GenericButton" unique_id=907398228 instance=ExtResource("5_bmjwd")]
 material_properties = 1
 burn_damage_amount = 1.0
 
-[node name="CurrencyCheck" parent="." unique_id=1743687655 instance=ExtResource("6_c7s72")]
+[node name="CurrencyCheck" parent="GenericButton" unique_id=1743687655 instance=ExtResource("6_w28a1")]
 currency_cost = 0
 
-[connection signal="damage_received" from="." to="." method="_on_damage_received"]
+[node name="ButtonMesh_off" type="MeshInstance3D" parent="GenericButton" unique_id=1966420634 groups=["ButtonColorMesh"]]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_7725o")
+surface_material_override/0 = SubResource("StandardMaterial3D_xfln6")
+script = ExtResource("7_liy11")
+
+[node name="ButtonMeshBase" type="MeshInstance3D" parent="GenericButton" unique_id=239472883]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -0.05, 0, 0)
+mesh = SubResource("BoxMesh_hey0k")
+
+[node name="ButtonShape" type="CollisionShape3D" parent="GenericButton" unique_id=378577582]
+transform = Transform3D(-4.3711392e-08, -1, 0, 0.99999976, -4.3711374e-08, 0, 0, 0, 0.99999976, -0.05, 0, -0.0019999992)
+shape = SubResource("BoxShape3D_bmjwd")
+
+[connection signal="damage_received" from="GenericButton" to="GenericButton" method="_on_damage_received"]
+[connection signal="pressed" from="GenericButton" to="." method="_on_generic_button_pressed"]

@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_j506e")
 container_name = "ShippingContainer 1"
+container_width = 8
 metadata/_custom_type_script = "uid://cc5ul5xn7b30w"

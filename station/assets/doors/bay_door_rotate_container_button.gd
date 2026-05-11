@@ -2,22 +2,20 @@ class_name RotateContainerButton
 extends Node3D
 
 @export var anchor_number: int
-@export var button_increments: bool = true
+@export var forward: bool = true
 
-var anchor_manager: AnchorManager
 func _ready() -> void:
-	anchor_manager = get_tree().get_first_node_in_group("AnchorManager")
-	if not anchor_manager:
-		print("no container manager, something is seriously wrong")
-		
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 
-func _on_cogito_button_pressed() -> void:
-	var anchor = anchor_manager.get_anchor_with_id(anchor_number)
-	if anchor:
-		anchor.container_rotate_button_pressed(button_increments)
+# every anchor is gonna need a unique id, so the rotate signals can be sent through the global 
+# bus without conflicting
+
+# ok now put this button as child of anchor, so it can derive it's id
+
+func _on_generic_button_pressed() -> void:
+		SignalBus.container_rotate_button_pressed(forward, anchor_number)

@@ -9,14 +9,6 @@ enum POWER_STATE {ON,OFF,BROKEN}
 var SECTORS: Array[String] = ["DOCKING", "ENGINEERING", "HABITAT", "OPERATIONS", "WASTE_PROCESSING"]
 
 
-#var power_by_sector: Dictionary[String,int] = {
-	#"engineering": 0, # Yellow
-	#"habitat": 0, # Green
-	#"waste_processing": 0, # Purple
-	#"docking": 0, # Red 
-	#"operations": 0 # Blue
-#}
-
 var power_max: int = 25
 
 @export_category("State")
@@ -28,7 +20,13 @@ var power_max: int = 25
 
 @export_category("Attributes")
 @export var container_name: String = "Power Module #"
-@export var container_scene: PackedScene
+# this is ROUGH. what is the side length of the smallest square the container gridmap
+#could fit in, in meters
+#@export var container_width: int
+
+# the scene should have the data. the data does not need the scene, since it shouldn't
+# be doing any businees 
+#@export var container_scene: PackedScene
 
 func initialize(id: int) -> void:
 	open_state = OPEN_STATE.values().pick_random()

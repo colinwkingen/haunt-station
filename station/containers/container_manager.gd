@@ -3,19 +3,23 @@ extends Node
 
 #signal container_swap_finished
 
-# this should contain all the possible container scenes, i.e. the models
-@export var container_scenes: Array[PackedScene]
+# there are N ShipContainer scenes, which can be assigned any of the ContainerData
 @export var max_containers: int = 10
 
-var is_switching: bool = false
-var container_data_array: Array[ContainerData]
+@export var container_scene_array: Array[PackedScene]
+@export var container_data_array: Array[ContainerData]
+
+@onready var world: Node3D = get_tree().get_first_node_in_group("World")
+
 var container_data_by_id: Dictionary[int, ContainerData]
 var container_instances_by_id: Dictionary[int, ShipContainer]
+
+var is_switching: bool = false
 var containers_initialized: bool = false
-var anchor_manager: AnchorManager
+@onready var anchor_manager: AnchorManager = get_tree().get_first_node_in_group("AnchorManager")
 
 func _ready() -> void:
-	anchor_manager = get_tree().get_first_node_in_group("AnchorManager")
+	pass
 
 
 func purge_containers() -> void:
@@ -38,23 +42,19 @@ func get_container_by_id(container_id: int) -> ShipContainer:
 	
 	
 func create_container(container_index: int) -> ShipContainer:
-	var container_data: ContainerData
+	if container_scene_array.is_empty():
+		print("no scenes in the container scene array")
+		return
+	var container_instance: ShipContainer = container_scene_array.pick_random().instantiate()
+	container_instance.container_id = container_index
 	if container_data_by_id.keys().has(container_index):
-		container_data = container_data_by_id[container_index]
-	
-	if not container_data:
-		container_data = ContainerData.new()
-		container_data.container_scene = container_scenes.pick_random()
-		container_data.initialize(container_index)
-		container_data_by_id[container_index] = container_data
-	
-	var container_instance: ShipContainer = container_data.container_scene.instantiate()
-	if container_instance.has_method("set_container_data"):
-		container_instance.set_container_data(container_data)
-		container_instance.container_id = container_index
-		add_child(container_instance)
-		container_instance.unstage()
-		container_instances_by_id[container_index] = container_instance
+		container_instance.set_container_data(container_data_by_id[container_index])
+	if not container_instance.container_data:
+		container_instance.generate_container_data()
+		container_data_by_id[container_index] = container_instance.container_data
+	world.add_child(container_instance)
+	container_instance.unstage()
+	container_instances_by_id[container_index] = container_instance
 	return container_instance
 
 			

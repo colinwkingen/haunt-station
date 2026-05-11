@@ -2,14 +2,6 @@ class_name PowerBreaker
 extends Node3D
 
 
-# I expect there to be consumers, and breakers. 
-# a consumer uses power to do X, and a breaker 
-# can turn off N consumers it tracks
-
-# should a breaker care about a power number at all? 
-# maybe just asks consumers
-
-
 # should we have A/B/C states instead
 @export var is_on: bool = true
 @export var power_used: int = 1

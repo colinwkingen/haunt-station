@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ContainerData" format=3 uid="uid://cqg27ubo3bppq"]
+
+[ext_resource type="PackedScene" uid="uid://dex30ltpoamr0" path="res://station/station.tscn" id="1_7xxh4"]
+[ext_resource type="Script" uid="uid://cjpgxsaekjusf" path="res://station/containers/definitions/container_anchor_data.gd" id="1_ds0as"]
+
+[resource]
+script = ExtResource("1_ds0as")
+opened = true
+sector = "ENGINEERING"
+container_width = 24
+container_scene = ExtResource("1_7xxh4")
+metadata/_custom_type_script = "uid://cc5ul5xn7b30w"
