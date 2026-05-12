@@ -133,17 +133,18 @@ transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 1, 0)
 [node name="Anchor1" type="Node3D" parent="Anchors" unique_id=196742063 groups=["Anchor"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -14)
 script = ExtResource("9_n1wy8")
-anchor_id = 1
 anchor_data = SubResource("Resource_ople6")
 
 [node name="bay-door-blue" parent="Anchors/Anchor1" unique_id=1907028322 groups=["BayDoor"] instance=ExtResource("11_q85j4")]
 transform = Transform3D(-2.1855694e-08, 0, 0.75, 0, 0.55, 0, -0.5, 0, -3.278354e-08, 0, 2.5, -1.875)
 script = ExtResource("12_x1w2d")
 
+[node name="RotateAnchorButton" parent="Anchors/Anchor1" unique_id=1971285424 instance=ExtResource("14_ople6")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -5.893546, 0, -2.6647196)
+
 [node name="Anchor2" type="Node3D" parent="Anchors" unique_id=271790435 groups=["Anchor"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
 script = ExtResource("9_n1wy8")
-anchor_id = 2
 anchor_data = SubResource("Resource_n7q1v")
 
 [node name="bay-door-green" parent="Anchors/Anchor2" unique_id=365152928 groups=["BayDoor"] instance=ExtResource("13_1mcs2")]
@@ -153,7 +154,6 @@ script = ExtResource("12_x1w2d")
 [node name="Anchor3" type="Node3D" parent="Anchors" unique_id=1575165431 groups=["Anchor"]]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 14, 0, 0)
 script = ExtResource("9_n1wy8")
-anchor_id = 3
 anchor_data = SubResource("Resource_n1wy8")
 
 [node name="bay-door-red" parent="Anchors/Anchor3" unique_id=227266845 groups=["BayDoor"] instance=ExtResource("14_2esvv")]
@@ -163,7 +163,6 @@ script = ExtResource("12_x1w2d")
 [node name="Anchor4" type="Node3D" parent="Anchors" unique_id=1062399407 groups=["Anchor"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14, 0, 0)
 script = ExtResource("9_n1wy8")
-anchor_id = 3
 anchor_data = SubResource("Resource_n1wy8")
 
 [node name="bay-door-red" parent="Anchors/Anchor4" unique_id=1180678722 groups=["BayDoor"] instance=ExtResource("14_2esvv")]
@@ -172,6 +171,3 @@ script = ExtResource("12_x1w2d")
 
 [node name="WallSwitch" parent="." unique_id=1465050445 instance=ExtResource("7_wblh0")]
 transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 8.444434, 0.598248, -3.2888834)
-
-[node name="WallButton" parent="." unique_id=1971285424 instance=ExtResource("14_ople6")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 5.8935466, 0, -11.335281)
