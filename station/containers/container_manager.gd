@@ -16,7 +16,6 @@ var container_instances_by_id: Dictionary[int, ShipContainer]
 
 var is_switching: bool = false
 var containers_initialized: bool = false
-@onready var anchor_manager: AnchorManager = get_tree().get_first_node_in_group("AnchorManager")
 
 func _ready() -> void:
 	pass
@@ -61,7 +60,7 @@ func create_container(container_index: int) -> ShipContainer:
 func print_all_containers() -> void:
 	for i in container_instances_by_id.keys():
 		var is_in_arr: bool = i in container_instances_by_id
-		var is_anchored: bool = anchor_manager.is_container_anchored(i)
+		var is_anchored: bool = ManagerBus.anchor_manager.is_container_anchored(i)
 		print("container id=%s is in arr=%s and is anchored=%s" % [i, is_in_arr, is_anchored])
 		
 	

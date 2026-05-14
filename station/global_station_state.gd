@@ -57,7 +57,7 @@ func remove_container_atts(container_data: ContainerData) -> void:
 	total_power -= container_data.power_level
 	#total_colors.erase(container_data.color)
 	
-	power_by_sector[container_data.sector] += container_data.power_level
+	power_by_sector[container_data.sector] -= container_data.power_level
 	
 	update_bigboard.emit(power_by_sector)
 	inform_doors_of_update()

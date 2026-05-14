@@ -1,16 +1,13 @@
 class_name BigBoard
 extends Node3D
 
-var global_station_state: GlobalStationState
-
 var world_coords: String
 
 func _ready() -> void:
 	initialize()
 	
 func initialize() -> void:
-	global_station_state = get_tree().get_first_node_in_group("GlobalStationState")
-	global_station_state.update_bigboard.connect(_update_power)
+	ManagerBus.global_station_state.update_bigboard.connect(_update_power)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

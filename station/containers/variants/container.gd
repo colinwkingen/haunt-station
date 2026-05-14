@@ -11,17 +11,15 @@ var container_id: int
 @export var container_width: int
 @export var indicator_light: OmniLight3D
 
-# can i just make a manager bus and onready all of these once?
-@onready var world_manager: WorldManager = get_tree().get_first_node_in_group("WorldManager")
-@onready var global_station_state: GlobalStationState = get_tree().get_first_node_in_group("GlobalStationState")
 
 func _ready() -> void:
 	if indicator_light:
 		indicator_light.light_color = container_data.get_color_obj()
-	if world_manager.num_locations() < 1:
+	# only the first container must do this, since it will never be docked or staged otherwise
+	if ManagerBus.world_manager.num_locations() < 1:
 		stage()
 		generate_container_data()
-		global_station_state.add_container_atts(container_data)
+		ManagerBus.global_station_state.add_container_atts(container_data)
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -72,4 +70,4 @@ func _label_big_board_with_coords() -> void:
 	for child in get_children():
 		if child is BigBoard:
 			big_board = child
-	big_board.update_coords(str(world_manager.get_grid_position(self)))
+	big_board.update_coords(str(ManagerBus.world_manager.get_grid_position(self)))

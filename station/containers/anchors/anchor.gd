@@ -11,15 +11,12 @@ var anchor_id: int = -1
 var container_node: ShipContainer
 var container_id: int
 var is_switching: bool
-@onready var container_manager: ContainerManager = get_tree().get_first_node_in_group("ContainerManager")
-@onready var anchor_manager: AnchorManager = get_tree().get_first_node_in_group("AnchorManager")
-@onready var world_manager: WorldManager = get_tree().get_first_node_in_group("WorldManager")
 # may not just be the previous int
 #var last_container_id: int
 var container_id_history: Array[int]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	anchor_id = anchor_manager.register_anchor_and_get_id(self)
+	anchor_id = ManagerBus.anchor_manager.register_anchor_and_get_id(self)
 	if anchor_id == -1:
 		print("error! got a -1 id for this anchor")
 	cardinal_direction = get_anchor_cardinal_direction()
@@ -78,7 +75,7 @@ func _is_container_spot_available() -> bool:
 	var owner_container: ShipContainer = owner	
 	print("this container _get_world_grid_position(): %s "% _get_world_grid_position())	
 	print("this anchor direction vect _get_world_grid_position(): %s "% Vector3i(position.normalized()))
-	return !world_manager.is_location_occupied(_get_world_grid_position() + Vector3i(position.normalized()))
+	return !ManagerBus.world_manager.is_location_occupied(_get_world_grid_position() + Vector3i(position.normalized()))
 
 	
 func dock_next_container() -> void:
@@ -87,7 +84,7 @@ func dock_next_container() -> void:
 		return
 	print("continuing with dock next container...")
 	
-	var container: ShipContainer = container_manager.get_next_available_container(container_id)
+	var container: ShipContainer = ManagerBus.container_manager.get_next_available_container(container_id)
 	print("got next available container? : %s"%container)
 	if container:
 		if container_node:
@@ -98,7 +95,7 @@ func dock_next_container() -> void:
 			container_id_history.append(container_id)
 		
 		set_container(container)
-		world_manager.register_container_simple(container)
+		ManagerBus.world_manager.register_container_simple(container)
 		add_docked_container_atts.emit(container_node.container_data)
 		container.stage()
 		
@@ -110,7 +107,7 @@ func dock_previous_container() -> void:
 		
 	print("container id at -1: %s" % container_id_history[-1])
 		
-	var container: ShipContainer = container_manager.get_container_by_id(container_id_history[-1])
+	var container: ShipContainer = ManagerBus.container_manager.get_container_by_id(container_id_history[-1])
 	if container:
 		container_id_history.pop_back()
 		if container_node:
