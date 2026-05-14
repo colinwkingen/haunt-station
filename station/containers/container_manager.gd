@@ -18,7 +18,11 @@ var is_switching: bool = false
 var containers_initialized: bool = false
 
 func _ready() -> void:
-	pass
+	# create the initial starting container
+	var seed: ShipContainer = create_container(0)
+	seed.stage()
+	ManagerBus.global_station_state.add_container_atts(seed.container_data)
+	ManagerBus.world_manager.register_container_simple(seed)
 
 
 func purge_containers() -> void:
@@ -52,7 +56,6 @@ func create_container(container_index: int) -> ShipContainer:
 		container_instance.generate_container_data()
 		container_data_by_id[container_index] = container_instance.container_data
 	world.add_child(container_instance)
-	container_instance.unstage()
 	container_instances_by_id[container_index] = container_instance
 	return container_instance
 
@@ -72,8 +75,7 @@ func below_container_max() -> bool:
 	return existing <= max_containers
 	
 	
-# need to get that array wrap when we hit max
-	
+
 func get_next_available_container(current_id: int) -> ShipContainer:
 	var index: int = 0
 	if current_id > 0:
@@ -81,7 +83,7 @@ func get_next_available_container(current_id: int) -> ShipContainer:
 	var next_container: ShipContainer = null
 	for i in range(index, max_containers):
 		if i in container_instances_by_id:
-			if not anchor_manager.is_container_anchored(i):
+			if not ManagerBus.anchor_manager.is_container_anchored(i):
 				next_container = container_instances_by_id[i]
 				container_instances_by_id[i].stage()
 				break

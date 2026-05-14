@@ -8,18 +8,13 @@ var container_id: int
 # the properties of the container should live in the container_data
 # only logic goes in the container itself
 @export var container_data: ContainerData
-@export var container_width: int
+@export var container_width: int = 24
 @export var indicator_light: OmniLight3D
 
 
 func _ready() -> void:
 	if indicator_light:
 		indicator_light.light_color = container_data.get_color_obj()
-	# only the first container must do this, since it will never be docked or staged otherwise
-	if ManagerBus.world_manager.num_locations() < 1:
-		stage()
-		generate_container_data()
-		ManagerBus.global_station_state.add_container_atts(container_data)
 		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

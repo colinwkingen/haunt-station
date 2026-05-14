@@ -97,7 +97,7 @@ func dock_next_container() -> void:
 		set_container(container)
 		ManagerBus.world_manager.register_container_simple(container)
 		add_docked_container_atts.emit(container_node.container_data)
-		container.stage()
+		#container.stage()
 		
 
 func dock_previous_container() -> void:

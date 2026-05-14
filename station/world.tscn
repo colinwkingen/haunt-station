@@ -1,10 +1,6 @@
 [gd_scene format=3 uid="uid://cso3ychxevoqf"]
 
 [ext_resource type="Script" uid="uid://c2kkj7vhsd1oi" path="res://addons/cogito/SceneManagement/cogito_scene.gd" id="1_p1d26"]
-[ext_resource type="PackedScene" uid="uid://dex30ltpoamr0" path="res://station/station.tscn" id="21_rn3gs"]
 
 [node name="World" type="Node3D" unique_id=1744721398 groups=["World"]]
 script = ExtResource("1_p1d26")
-
-[node name="Station" parent="." unique_id=1958024173 instance=ExtResource("21_rn3gs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

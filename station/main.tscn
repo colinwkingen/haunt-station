@@ -62,7 +62,7 @@ light_indirect_energy = 0.75
 light_specular = 0.75
 
 [node name="Player" parent="." unique_id=453687854 instance=ExtResource("2_fsnyp")]
-transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, -5, 0.25, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 inventory_data = SubResource("Resource_366ur")
 step_height_camera_lerp = 1.5
 
