@@ -8,19 +8,21 @@ var container_id: int
 # the properties of the container should live in the container_data
 # only logic goes in the container itself
 @export var container_data: ContainerData
-
-# what are you doig here?
 @export var container_width: int
-
 @export var indicator_light: OmniLight3D
 
+# can i just make a manager bus and onready all of these once?
+@onready var world_manager: WorldManager = get_tree().get_first_node_in_group("WorldManager")
+@onready var global_station_state: GlobalStationState = get_tree().get_first_node_in_group("GlobalStationState")
+
 func _ready() -> void:
-	# the containers must have consistent children, and explicitly allow for missing ones
 	if indicator_light:
 		indicator_light.light_color = container_data.get_color_obj()
-	pass
-	 # Replace with function body.
-
+	if world_manager.num_locations() < 1:
+		stage()
+		generate_container_data()
+		global_station_state.add_container_atts(container_data)
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -35,19 +37,21 @@ func unstage() -> void:
 func stage() -> void:
 	visible = true
 	set_process_mode(Node.PROCESS_MODE_INHERIT)
+	_label_big_board_with_coords()
 
-#Variant owns only local behavior; manager owns placement and cycling.
+# only fires when a container is swapped for an exisiting one
 func set_container_data(data: ContainerData) -> void:
 	print("-- triggered set_container_data()")
 	container_data = data
 	_generate_label()
 	
+# fires whenever a new container is created
 func generate_container_data() -> void:
 	container_data = ContainerData.new()
 	# we are doing index and id? oops? equivalent?
 	container_data.initialize(container_id)
 	
-
+# not used anymore?
 func _generate_label() -> void:
 	if container_label:
 		container_label.text = ""
@@ -61,6 +65,11 @@ func _generate_label() -> void:
 func _label_append_line(key, value) -> void:
 	#container_label.add_text(line)
 	#container_label.newline()
-	# str for mah ints
 	container_label.text += (key + str(value) + "\n")
 	
+func _label_big_board_with_coords() -> void:
+	var big_board: BigBoard
+	for child in get_children():
+		if child is BigBoard:
+			big_board = child
+	big_board.update_coords(str(world_manager.get_grid_position(self)))

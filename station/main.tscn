@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dnwgcdyvw8lt3" path="res://station/containers/anchors/anchor_manager.gd" id="7_vbqfq"]
 [ext_resource type="PackedScene" uid="uid://dex30ltpoamr0" path="res://station/station.tscn" id="8_7v2rt"]
 [ext_resource type="Script" uid="uid://c34wfnd5ha8ri" path="res://station/containers/container_manager.gd" id="8_vjj7l"]
+[ext_resource type="Script" uid="uid://bmc2hctih3oye" path="res://station/world_manager.gd" id="11_366ur"]
 [ext_resource type="Script" uid="uid://buasgl2ejspp6" path="res://station/global_station_state.gd" id="12_po3sy"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_orht3"]
@@ -40,7 +41,7 @@ volumetric_fog_ambient_inject = 0.1
 volumetric_fog_sky_affect = 0.1
 volumetric_fog_temporal_reprojection_amount = 0.85
 
-[sub_resource type="Resource" id="Resource_7v2rt"]
+[sub_resource type="Resource" id="Resource_366ur"]
 resource_local_to_scene = true
 script = ExtResource("4_wocat")
 grid = true
@@ -62,7 +63,7 @@ light_specular = 0.75
 
 [node name="Player" parent="." unique_id=453687854 instance=ExtResource("2_fsnyp")]
 transform = Transform3D(-1, 0, 7.45058e-07, 0, 1, 0, -7.45058e-07, 0, -1, -5, 0.25, -4)
-inventory_data = SubResource("Resource_7v2rt")
+inventory_data = SubResource("Resource_366ur")
 step_height_camera_lerp = 1.5
 
 [node name="World" parent="." unique_id=1744721398 instance=ExtResource("5_37puo")]
@@ -77,3 +78,7 @@ script = ExtResource("7_vbqfq")
 
 [node name="GlobalStationState" type="Node" parent="." unique_id=737926301 groups=["GlobalStationState"]]
 script = ExtResource("12_po3sy")
+
+[node name="WorldManager" type="Node" parent="." unique_id=337810458 groups=["WorldManager"]]
+script = ExtResource("11_366ur")
+metadata/_custom_type_script = "uid://bmc2hctih3oye"

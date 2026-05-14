@@ -13,6 +13,7 @@ var container_id: int
 var is_switching: bool
 @onready var container_manager: ContainerManager = get_tree().get_first_node_in_group("ContainerManager")
 @onready var anchor_manager: AnchorManager = get_tree().get_first_node_in_group("AnchorManager")
+@onready var world_manager: WorldManager = get_tree().get_first_node_in_group("WorldManager")
 # may not just be the previous int
 #var last_container_id: int
 var container_id_history: Array[int]
@@ -49,36 +50,55 @@ func get_anchor_cardinal_direction() -> String:
 				return "EAST"
 		return "ERR"
 	return cardinal_direction
+		
 
 # actually this is shitty and we just need a world_manager to establish a grid for rooms
 func _set_container_location_to_anchor_location(container: ShipContainer) -> void:
-	#This is the local top node3d, the container
-	var current_container = get_tree().get_first_node_in_group("Container")
-	print("got current_container? %s"%current_container)
-	print("got new container? : %s"%container)
+	var current_container: ShipContainer = owner
 	# this is the anchor's position from the origin of the container-
 	# -1 or +1 on an axis
-	var local_offset: Vector3 = position.normalized()
-	print("new container width? %s"%container.container_width)
+	var normalized_offset: Vector3 = position.normalized()
+	#print("new container width? %s"%container.container_width)
 	# Transform local offset to world space using container's rotation
-	print("local offset? %s"%local_offset)
-	# since the other axis are zero, the hardcoded offset shoud tell
-	# us where to place the new container, relative to the anchor
-	var world_offset = container.container_width * local_offset
-	print("world offset? %s"%world_offset)
+	#print("normalized_offset? %s"%normalized_offset)
+	var local_offset = container.container_width * normalized_offset
+	#print("local offset? %s"%local_offset)
 	# Position new container as sibling with the offset applied
+	var world_offset = local_offset + current_container.position
 	container.set_position(world_offset)
 	container.rotation = current_container.rotation
 	
+# getting a little confusing with anchor and container global position
+# this one used just to determine direction anchor points?
+func _get_world_grid_position() -> Vector3i:
+	var current_container: ShipContainer = owner
+	return Vector3i(global_position / current_container.container_width)
+
+func _is_container_spot_available() -> bool:
+	var owner_container: ShipContainer = owner	
+	print("this container _get_world_grid_position(): %s "% _get_world_grid_position())	
+	print("this anchor direction vect _get_world_grid_position(): %s "% Vector3i(position.normalized()))
+	return !world_manager.is_location_occupied(_get_world_grid_position() + Vector3i(position.normalized()))
+
+	
 func dock_next_container() -> void:
+	# don't do anything if world spot is occupied
+	if !_is_container_spot_available():
+		return
+	print("continuing with dock next container...")
+	
 	var container: ShipContainer = container_manager.get_next_available_container(container_id)
 	print("got next available container? : %s"%container)
 	if container:
 		if container_node:
 			remove_docked_container_atts.emit(container_node.container_data)
+			
+			# unstage should remove from world grid
 			container_node.unstage()
 			container_id_history.append(container_id)
+		
 		set_container(container)
+		world_manager.register_container_simple(container)
 		add_docked_container_atts.emit(container_node.container_data)
 		container.stage()
 		

@@ -30,13 +30,12 @@ var power_by_sector: Dictionary[String,int] = {
 func _ready() -> void:
 	anchor_manager = get_tree().get_first_node_in_group("AnchorManager")
 	for anchor in anchor_manager.get_all_anchors():
-		print("adding signals")
-		anchor.add_docked_container_atts.connect(_add_container_atts)
-		anchor.remove_docked_container_atts.connect(_remove_container_atts)
+		anchor.add_docked_container_atts.connect(add_container_atts)
+		anchor.remove_docked_container_atts.connect(remove_container_atts)
 	# global station state owns bigboard, which displays state
-	for node in get_tree().get_nodes_in_group("BigBoard"):
-		var bigboard: BigBoard = node
-		bigboard.initialize()
+	#for node in get_tree().get_nodes_in_group("BigBoard"):
+		#var bigboard: BigBoard = node
+		#bigboard.initialize()
 	SignalBus.connect("_breaker_flipped", update_sector_power)
 
 
@@ -45,7 +44,7 @@ func _process(delta: float) -> void:
 	pass
 
 
-func _add_container_atts(container_data: ContainerData) -> void:
+func add_container_atts(container_data: ContainerData) -> void:
 	total_power += container_data.power_level
 	#total_colors.append(container_data.sector)
 	
@@ -54,7 +53,7 @@ func _add_container_atts(container_data: ContainerData) -> void:
 	update_bigboard.emit(power_by_sector)
 	inform_doors_of_update()
 
-func _remove_container_atts(container_data: ContainerData) -> void:
+func remove_container_atts(container_data: ContainerData) -> void:
 	total_power -= container_data.power_level
 	#total_colors.erase(container_data.color)
 	

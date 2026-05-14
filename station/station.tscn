@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://dex30ltpoamr0"]
 
-[ext_resource type="Script" uid="uid://b5vgj6wmwlfie" path="res://station/power_consumers/power_breaker.gd" id="1_5m2gh"]
 [ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/container.gd" id="1_6qqge"]
 [ext_resource type="MeshLibrary" uid="uid://jbhqrtxqoudg" path="res://assets/walls.tres" id="1_d74ld"]
 [ext_resource type="PackedScene" uid="uid://cfhywen8yyhi2" path="res://station/assets/simple_station_light.tscn" id="2_4gatj"]
@@ -40,8 +39,6 @@ metadata/_custom_type_script = "uid://cjpgxsaekjusf"
 [node name="Station" type="Node3D" unique_id=1958024173 groups=["Container"]]
 script = ExtResource("1_6qqge")
 container_width = 24
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1529797154]
 
 [node name="GridFloor" type="GridMap" parent="." unique_id=105687899]
 transform = Transform3D(0.667, 0, 0, 0, 0.667, 0, 0, 0, 0.667, 0, -1, 0)
@@ -95,7 +92,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 12, 
 transform = Transform3D(-3.934025e-08, 0, -0.9, 0, 0.9, 0, 0.9, 0, -3.934025e-08, -3, -1, -7.5)
 
 [node name="BigBoard" type="Node3D" parent="." unique_id=1725112383 groups=["BigBoard"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 1, -11.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -11.5)
 script = ExtResource("4_40u6s")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="BigBoard" unique_id=968715474]
@@ -120,14 +117,6 @@ required_power = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -1, -10)
 required_power = 2
 
-[node name="PowerBreaker" type="Node3D" parent="." unique_id=1572937089]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -6)
-script = ExtResource("1_5m2gh")
-metadata/_custom_type_script = "uid://b5vgj6wmwlfie"
-
-[node name="BreakerSwitch" parent="PowerBreaker" unique_id=1679353221 groups=["BreakerSwitch"] instance=ExtResource("7_wblh0")]
-transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 1, 0)
-
 [node name="Anchors" type="Node3D" parent="." unique_id=1993173190]
 
 [node name="Anchor1" type="Node3D" parent="Anchors" unique_id=196742063 groups=["Anchor"]]
@@ -140,7 +129,7 @@ transform = Transform3D(-2.1855694e-08, 0, 0.75, 0, 0.55, 0, -0.5, 0, -3.278354e
 script = ExtResource("12_x1w2d")
 
 [node name="RotateAnchorButton" parent="Anchors/Anchor1" unique_id=1971285424 instance=ExtResource("14_ople6")]
-transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -5.893546, 0, -2.6647196)
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -6, 0, -2.53)
 
 [node name="Anchor2" type="Node3D" parent="Anchors" unique_id=271790435 groups=["Anchor"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
@@ -151,6 +140,9 @@ anchor_data = SubResource("Resource_n7q1v")
 transform = Transform3D(-2.1855694e-08, 0, 0.75, 0, 0.55, 0, -0.5, 0, -3.278354e-08, 0, 2.5, -1.875)
 script = ExtResource("12_x1w2d")
 
+[node name="RotateAnchorButton" parent="Anchors/Anchor2" unique_id=1465050445 instance=ExtResource("14_ople6")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -6, 0, -2.53)
+
 [node name="Anchor3" type="Node3D" parent="Anchors" unique_id=1575165431 groups=["Anchor"]]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 14, 0, 0)
 script = ExtResource("9_n1wy8")
@@ -159,6 +151,9 @@ anchor_data = SubResource("Resource_n1wy8")
 [node name="bay-door-red" parent="Anchors/Anchor3" unique_id=227266845 groups=["BayDoor"] instance=ExtResource("14_2esvv")]
 transform = Transform3D(-2.1855694e-08, 0, 0.75, 0, 0.55, 0, -0.5, 0, -3.278354e-08, 0, 2.5, -1.875)
 script = ExtResource("12_x1w2d")
+
+[node name="RotateAnchorButton" parent="Anchors/Anchor3" unique_id=1471093033 instance=ExtResource("14_ople6")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -6, 0, -2.53)
 
 [node name="Anchor4" type="Node3D" parent="Anchors" unique_id=1062399407 groups=["Anchor"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14, 0, 0)
@@ -169,5 +164,8 @@ anchor_data = SubResource("Resource_n1wy8")
 transform = Transform3D(-2.1855694e-08, 0, 0.75, 0, 0.55, 0, -0.5, 0, -3.278354e-08, 0, 2.5, -1.875)
 script = ExtResource("12_x1w2d")
 
-[node name="WallSwitch" parent="." unique_id=1465050445 instance=ExtResource("7_wblh0")]
-transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 8.444434, 0.598248, -3.2888834)
+[node name="RotateAnchorButton" parent="Anchors/Anchor4" unique_id=149109601 instance=ExtResource("14_ople6")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -6, 0, -2.53)
+
+[node name="BreakerSwitch" parent="." unique_id=1679353221 groups=["BreakerSwitch"] instance=ExtResource("7_wblh0")]
+transform = Transform3D(-3.090862e-08, 3.0908605e-08, -0.9999996, 0.70710677, 0.7071065, 0, 0.70710677, -0.7071065, -4.371137e-08, -3, 0.1, -7.5)

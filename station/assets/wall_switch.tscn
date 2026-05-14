@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://b05od7urmjmru"]
 
+[ext_resource type="Script" uid="uid://b5vgj6wmwlfie" path="res://station/power_consumers/power_breaker.gd" id="1_4h0dq"]
 [ext_resource type="Script" uid="uid://dohpdn3hnc12v" path="res://addons/cogito/CogitoObjects/cogito_button.gd" id="1_y7t7r"]
 [ext_resource type="AudioStream" uid="uid://b6wdy2102jymr" path="res://addons/cogito/Assets/Audio/Kenney/UiAudio/switch2.ogg" id="2_o1fwi"]
 [ext_resource type="PackedScene" uid="uid://l61jtpfxu5x5" path="res://addons/cogito/Components/Interactions/BasicInteraction.tscn" id="4_0yr63"]
@@ -164,6 +165,7 @@ data = PackedVector3Array(-0.035, 0.05000007, 0.125, -0.035, 0.14999998, -0.125,
 data = PackedVector3Array(-0.035, -0.14999998, 0.125, -0.035, -0.05000007, -0.125, -0.035, -0.05000007, 0.125, -0.035, -0.14999998, 0.125, -0.035, -0.14999998, -0.125, -0.035, -0.05000007, -0.125, -0.0037499997, -0.05000007, -0.125, 0.015000001, -0.087499976, 0.125, -0.0037499997, -0.05000007, 0.125, -0.0037499997, -0.05000007, -0.125, 0.015000001, -0.087499976, -0.125, 0.015000001, -0.087499976, 0.125, -0.0037499997, -0.05000007, -0.125, -0.035, -0.05000007, 0.125, -0.035, -0.05000007, -0.125, -0.0037499997, -0.05000007, -0.125, -0.0037499997, -0.05000007, 0.125, -0.035, -0.05000007, 0.125, -0.0037499997, -0.14999998, 0.125, 0.015000001, -0.11250007, -0.125, -0.0037499997, -0.14999998, -0.125, -0.0037499997, -0.14999998, 0.125, 0.015000001, -0.11250007, 0.125, 0.015000001, -0.11250007, -0.125, -0.0037499997, -0.14999998, -0.125, -0.035, -0.05000007, -0.125, -0.035, -0.14999998, -0.125, -0.035, -0.05000007, -0.125, 0.015000001, -0.087499976, -0.125, -0.0037499997, -0.05000007, -0.125, 0.015000001, -0.087499976, -0.125, -0.0037499997, -0.14999998, -0.125, 0.015000001, -0.11250007, -0.125, -0.035, -0.05000007, -0.125, -0.0037499997, -0.14999998, -0.125, 0.015000001, -0.087499976, -0.125, -0.035, -0.14999998, -0.125, -0.0037499997, -0.14999998, 0.125, -0.0037499997, -0.14999998, -0.125, -0.035, -0.14999998, -0.125, -0.035, -0.14999998, 0.125, -0.0037499997, -0.14999998, 0.125, 0.015000001, -0.11250007, -0.125, 0.015000001, -0.087499976, 0.125, 0.015000001, -0.087499976, -0.125, 0.015000001, -0.11250007, -0.125, 0.015000001, -0.11250007, 0.125, 0.015000001, -0.087499976, 0.125, -0.035, -0.14999998, 0.125, 0.015000001, -0.11250007, 0.125, -0.0037499997, -0.14999998, 0.125, 0.015000001, -0.11250007, 0.125, -0.0037499997, -0.05000007, 0.125, 0.015000001, -0.087499976, 0.125, -0.0037499997, -0.05000007, 0.125, -0.035, -0.14999998, 0.125, -0.035, -0.05000007, 0.125, 0.015000001, -0.11250007, 0.125, -0.035, -0.14999998, 0.125, -0.0037499997, -0.05000007, 0.125)
 
 [node name="WallSwitch" type="Node3D" unique_id=1465050445]
+script = ExtResource("1_4h0dq")
 
 [node name="GenericButton" type="AnimatableBody3D" parent="." unique_id=1679353221]
 transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0)
@@ -230,5 +232,7 @@ omni_range = 1.0
 script = ExtResource("7_y7t7r")
 
 [connection signal="damage_received" from="GenericButton" to="GenericButton" method="_on_damage_received"]
+[connection signal="pressed" from="GenericButton" to="." method="_on_generic_button_pressed"]
 [connection signal="pressed" from="GenericButton" to="GenericButton/OnLight" method="_on_generic_button_pressed"]
 [connection signal="pressed" from="GenericButton" to="GenericButton/OffLight" method="_on_generic_button_pressed"]
+[connection signal="switch_flipped" from="GenericButton/OnLight" to="." method="_on_on_light_switch_flipped"]

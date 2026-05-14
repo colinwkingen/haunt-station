@@ -1,6 +1,8 @@
 class_name OmniLightSwitch
 extends OmniLight3D
 
+signal switch_flipped(is_on: bool)
+
 @export var is_on: bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,9 +13,11 @@ func _process(delta: float) -> void:
 	pass
 
 func switch_off() -> void:
+	switch_flipped.emit(false)
 	self.light_energy = 0
 
 func switch_on() -> void:
+	switch_flipped.emit(true)
 	self.light_energy = 0.3
 
 func _on_generic_button_pressed() -> void:
