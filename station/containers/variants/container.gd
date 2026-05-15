@@ -11,6 +11,7 @@ var container_id: int
 @export var container_width: int = 24
 @export var indicator_light: OmniLight3D
 
+@export var big_board: BigBoard
 
 func _ready() -> void:
 	if indicator_light:
@@ -25,12 +26,17 @@ func unstage() -> void:
 	visible = false
 	set_process_mode(Node.PROCESS_MODE_DISABLED)
 	# go out of view, until we manage dequeueing undocked
+	ManagerBus.global_station_state.remove_container_atts(container_data)
 	set_position(Vector3(100,100,100))
-	
+
+# this must be being called twice on NEW containers and not seed for the power to be doubled
 func stage() -> void:
+	print("stage called!!!")
 	visible = true
 	set_process_mode(Node.PROCESS_MODE_INHERIT)
+	ManagerBus.global_station_state.add_container_atts(container_data)
 	_label_big_board_with_coords()
+	ManagerBus.global_station_state.refresh_sector_power()
 
 # only fires when a container is swapped for an exisiting one
 func set_container_data(data: ContainerData) -> void:
@@ -64,5 +70,6 @@ func _label_big_board_with_coords() -> void:
 	var big_board: BigBoard
 	for child in get_children():
 		if child is BigBoard:
+			print("found bigboard")
 			big_board = child
 	big_board.update_coords(str(ManagerBus.world_manager.get_grid_position(self)))

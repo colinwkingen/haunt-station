@@ -1,8 +1,6 @@
 class_name Anchor
 extends Node3D
 
-signal add_docked_container_atts(container: ShipContainer)
-signal remove_docked_container_atts(container: ShipContainer)
 
 var anchor_id: int = -1
 @export var anchor_name: String
@@ -52,35 +50,27 @@ func get_anchor_cardinal_direction() -> String:
 # actually this is shitty and we just need a world_manager to establish a grid for rooms
 func _set_container_location_to_anchor_location(container: ShipContainer) -> void:
 	var current_container: ShipContainer = owner
-	# this is the anchor's position from the origin of the container-
-	# -1 or +1 on an axis
 	var normalized_offset: Vector3 = position.normalized()
-	#print("new container width? %s"%container.container_width)
-	# Transform local offset to world space using container's rotation
-	#print("normalized_offset? %s"%normalized_offset)
 	var local_offset = container.container_width * normalized_offset
-	#print("local offset? %s"%local_offset)
-	# Position new container as sibling with the offset applied
 	var world_offset = local_offset + current_container.position
 	container.set_position(world_offset)
 	container.rotation = current_container.rotation
 	
-# getting a little confusing with anchor and container global position
-# this one used just to determine direction anchor points?
-func _get_world_grid_position() -> Vector3i:
-	var current_container: ShipContainer = owner
-	return Vector3i(global_position / current_container.container_width)
+
 
 func _is_container_spot_available() -> bool:
-	var owner_container: ShipContainer = owner	
-	print("this container _get_world_grid_position(): %s "% _get_world_grid_position())	
-	print("this anchor direction vect _get_world_grid_position(): %s "% Vector3i(position.normalized()))
-	return !ManagerBus.world_manager.is_location_occupied(_get_world_grid_position() + Vector3i(position.normalized()))
+	# divide by the global width to get the grid units of the container.
+	# the anchor is offset in the same direction we want to offset a new container
+	var current_container: ShipContainer = owner
+	var current_container_grid_coords = Vector3i(current_container.global_position / current_container.container_width)
+	var adjacent_spot: Vector3i = current_container_grid_coords + Vector3i(position.normalized())
+	return !ManagerBus.world_manager.is_location_occupied(adjacent_spot)
 
 	
 func dock_next_container() -> void:
 	# don't do anything if world spot is occupied
 	if !_is_container_spot_available():
+		print("spot occupied, abort docking")
 		return
 	print("continuing with dock next container...")
 	
@@ -88,16 +78,13 @@ func dock_next_container() -> void:
 	print("got next available container? : %s"%container)
 	if container:
 		if container_node:
-			remove_docked_container_atts.emit(container_node.container_data)
-			
 			# unstage should remove from world grid
 			container_node.unstage()
 			container_id_history.append(container_id)
 		
 		set_container(container)
 		ManagerBus.world_manager.register_container_simple(container)
-		add_docked_container_atts.emit(container_node.container_data)
-		#container.stage()
+		container.stage()
 		
 
 func dock_previous_container() -> void:
@@ -111,11 +98,9 @@ func dock_previous_container() -> void:
 	if container:
 		container_id_history.pop_back()
 		if container_node:
-			remove_docked_container_atts.emit(container_node.container_data)
 			container_node.unstage()
 			container_id_history.append(container_id)
 		set_container(container)
-		add_docked_container_atts.emit(container_node.container_data)
 		container.stage()
 	
 	

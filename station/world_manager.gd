@@ -29,6 +29,9 @@ func get_grid_position(container: ShipContainer) -> Vector3i:
 
 func num_locations() -> int:
 	return world_grid.keys().size()
+	
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

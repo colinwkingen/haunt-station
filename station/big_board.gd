@@ -18,10 +18,11 @@ func update_coords(coords_str: String) -> void:
 	world_coords = coords_str
 
 func _update_power(power_by_sector: Dictionary[String,int]) -> void:
+	var board_update: String = "Coords: %s \n " % world_coords
 	var total_power: int
 	for value in power_by_sector.values():
 		total_power += value
-	var board_update: String = "Coords: %s \n Total Power: %s\n" % [world_coords, total_power]
+	board_update += " Total Power: %s\n" % total_power
 	for key in power_by_sector.keys():
 		board_update += "%s: %s\n" % [key, power_by_sector[key]]
 	$BoardText.text = board_update

@@ -28,14 +28,6 @@ var power_by_sector: Dictionary[String,int] = {
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	anchor_manager = get_tree().get_first_node_in_group("AnchorManager")
-	for anchor in anchor_manager.get_all_anchors():
-		anchor.add_docked_container_atts.connect(add_container_atts)
-		anchor.remove_docked_container_atts.connect(remove_container_atts)
-	# global station state owns bigboard, which displays state
-	#for node in get_tree().get_nodes_in_group("BigBoard"):
-		#var bigboard: BigBoard = node
-		#bigboard.initialize()
 	SignalBus.connect("_breaker_flipped", update_sector_power)
 
 
@@ -45,6 +37,10 @@ func _process(delta: float) -> void:
 
 
 func add_container_atts(container_data: ContainerData) -> void:
+	print("adding container atts!!!")
+	
+	print("power level: %s sector: %s" % [container_data.power_level, container_data.sector ])
+	
 	total_power += container_data.power_level
 	#total_colors.append(container_data.sector)
 	
@@ -83,8 +79,13 @@ func get_door_requirement_dict() -> Dictionary:
 		"total_colors": total_colors.duplicate()
 	}
 	
-	
+
 func update_sector_power(sector: String, value: int) -> void:
+	print("update sector power!!!")
 	power_by_sector[sector] += value
+	inform_doors_of_update()
+	update_bigboard.emit(power_by_sector)
+	
+func refresh_sector_power() -> void:
 	update_bigboard.emit(power_by_sector)
 	

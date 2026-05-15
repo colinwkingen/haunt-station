@@ -21,7 +21,6 @@ func _ready() -> void:
 	# create the initial starting container
 	var seed: ShipContainer = create_container(0)
 	seed.stage()
-	ManagerBus.global_station_state.add_container_atts(seed.container_data)
 	ManagerBus.world_manager.register_container_simple(seed)
 
 

@@ -36,9 +36,9 @@ script = ExtResource("10_n0xn2")
 anchor_id = 3
 metadata/_custom_type_script = "uid://cjpgxsaekjusf"
 
-[node name="Station" type="Node3D" unique_id=1958024173 groups=["Container"]]
+[node name="Station" type="Node3D" unique_id=1958024173 node_paths=PackedStringArray("big_board") groups=["Container"]]
 script = ExtResource("1_6qqge")
-container_width = 24
+big_board = NodePath("BigBoard")
 
 [node name="GridFloor" type="GridMap" parent="." unique_id=105687899]
 transform = Transform3D(0.667, 0, 0, 0, 0.667, 0, 0, 0, 0.667, 0, -1, 0)
