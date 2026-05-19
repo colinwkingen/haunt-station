@@ -1,0 +1,178 @@
+[gd_scene format=3 uid="uid://cdxlupsm0cogi"]
+
+[ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/container.gd" id="1_52fni"]
+[ext_resource type="MeshLibrary" uid="uid://bijdnovmtwstx" path="res://low_poly_station.tres" id="2_52fni"]
+[ext_resource type="PackedScene" uid="uid://cfhywen8yyhi2" path="res://station/assets/simple_station_light.tscn" id="3_h38vm"]
+[ext_resource type="PackedScene" uid="uid://dr8gt3tk8oinv" path="res://station/assets/bay_console.tscn" id="4_0cdor"]
+[ext_resource type="Script" uid="uid://b51d2rud0k0sa" path="res://station/big_board.gd" id="5_egwyk"]
+[ext_resource type="PackedScene" uid="uid://dqpofcx3t21n5" path="res://station/assets/doorway_2.tscn" id="6_kjata"]
+[ext_resource type="Script" uid="uid://jk6cp4oe2gn6" path="res://station/containers/anchors/anchor.gd" id="7_52y2s"]
+[ext_resource type="Script" uid="uid://cjpgxsaekjusf" path="res://station/containers/definitions/container_anchor_data.gd" id="8_u7s7a"]
+[ext_resource type="PackedScene" uid="uid://1587lfmswgt6" path="res://station/assets/doors/bay_door_blue.tscn" id="9_d6f3e"]
+[ext_resource type="Script" uid="uid://bwwrcdxxgvbk7" path="res://station/assets/doors/bay_door.gd" id="10_4mgt6"]
+[ext_resource type="PackedScene" uid="uid://0aog0yp3sugo" path="res://station/assets/wall_button.tscn" id="11_jos7s"]
+[ext_resource type="PackedScene" uid="uid://clvt6jjjdkcon" path="res://station/assets/doors/bay_door_green.tscn" id="12_o3f7a"]
+[ext_resource type="PackedScene" uid="uid://ckw4xh44ew60k" path="res://station/assets/doors/bay_door_red.tscn" id="13_70k2d"]
+[ext_resource type="PackedScene" uid="uid://b05od7urmjmru" path="res://station/assets/wall_switch.tscn" id="14_fv7je"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aygmc"]
+size = Vector2(1.3, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aygmc"]
+albedo_color = Color(0.02617561, 0.026175609, 0.026175609, 1)
+
+[sub_resource type="Resource" id="Resource_ople6"]
+script = ExtResource("8_u7s7a")
+anchor_id = 1
+metadata/_custom_type_script = "uid://cjpgxsaekjusf"
+
+[sub_resource type="Resource" id="Resource_n7q1v"]
+script = ExtResource("8_u7s7a")
+anchor_id = 2
+metadata/_custom_type_script = "uid://cjpgxsaekjusf"
+
+[sub_resource type="Resource" id="Resource_n1wy8"]
+script = ExtResource("8_u7s7a")
+anchor_id = 3
+metadata/_custom_type_script = "uid://cjpgxsaekjusf"
+
+[node name="Station" type="Node3D" unique_id=1958024173 node_paths=PackedStringArray("big_board") groups=["Container"]]
+script = ExtResource("1_52fni")
+big_board = NodePath("BigBoard")
+
+[node name="GridFloor" type="GridMap" parent="." unique_id=105687899]
+mesh_library = ExtResource("2_52fni")
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65533, 65532, 16, 65534, 65532, 16, 65535, 65532, 16, 65533, 65533, 16, 65534, 65533, 16, 65535, 65533, 16, 65533, 65531, 16, 65534, 65531, 16, 65535, 65531, 16, 65535, 0, 16, 0, 0, 16, 1, 0, 16, 2, 0, 16, 3, 0, 16, 4, 0, 16, 4, 1, 16, 4, 2, 16, 4, 3, 16, 4, 4, 16, 4, 5, 16, 3, 5, 16, 2, 5, 16, 1, 5, 16, 0, 5, 16, 65535, 5, 16, 65535, 4, 16, 65535, 3, 16, 65535, 2, 16, 65535, 1, 16, 65533, 0, 16, 65533, 1, 16, 65533, 2, 16, 65533, 3, 16, 65533, 4, 16, 65533, 5, 2, 65534, 5, 16, 65534, 4, 16, 65534, 3, 16, 65534, 2, 16, 65534, 1, 16, 65534, 0, 16, 3, 1, 16, 2, 1, 16, 1, 1, 16, 0, 1, 16, 0, 2, 16, 0, 3, 16, 0, 4, 16, 1, 4, 16, 2, 4, 16, 3, 4, 16, 3, 3, 16, 3, 2, 16, 2, 2, 16, 1, 2, 16, 1, 3, 16, 2, 3, 16, 4, 65535, 16, 4, 65534, 16, 4, 65533, 16, 4, 65532, 16, 4, 65531, 16, 3, 65531, 16, 2, 65531, 16, 1, 65531, 16, 0, 65531, 16, 0, 65532, 16, 0, 65533, 16, 0, 65534, 16, 0, 65535, 16, 1, 65535, 16, 2, 65535, 16, 3, 65535, 16, 3, 65534, 16, 3, 65533, 16, 3, 65532, 16, 2, 65532, 16, 1, 65532, 16, 1, 65533, 16, 2, 65533, 16, 2, 65534, 16, 1, 65534, 16, 5, 65530, 16, 5, 65531, 16, 5, 65532, 16, 5, 65533, 16, 5, 65534, 16, 5, 65535, 16, 5, 0, 16, 5, 1, 16, 5, 2, 16, 5, 3, 16, 5, 4, 16, 5, 5, 16, 65530, 5, 16, 65530, 4, 16, 65530, 3, 16, 65530, 2, 16, 65530, 1, 16, 65530, 0, 16, 65530, 65535, 16, 65530, 65534, 16, 65530, 65533, 16, 65530, 65532, 16, 65530, 65531, 16, 65530, 65530, 16, 65531, 65530, 16, 65532, 65530, 16, 65533, 65530, 16, 65534, 65530, 16, 65535, 65530, 16, 0, 65530, 16, 1, 65530, 16, 2, 65530, 16, 3, 65530, 16, 4, 65530, 16, 65535, 65534, 16, 65534, 65534, 16, 65533, 65534, 16, 65532, 65534, 16, 65532, 65533, 16, 65532, 65532, 16, 65532, 65531, 16, 65531, 65531, 16, 65531, 65532, 16, 65531, 65533, 16, 65531, 65534, 16, 65531, 65535, 16, 65532, 65535, 16, 65533, 65535, 16, 65534, 65535, 16, 65535, 65535, 16, 65532, 0, 16, 65532, 1, 16, 65532, 2, 16, 65532, 3, 16, 65532, 4, 16, 65532, 5, 16, 65531, 5, 16, 65531, 4, 16, 65531, 3, 16, 65531, 2, 16, 65531, 1, 16, 65531, 0, 16, 65533, 6, 16)
+}
+metadata/_editor_floor_ = Vector3(0, 3, 0)
+
+[node name="GridWall" type="GridMap" parent="." unique_id=1225180372]
+mesh_library = ExtResource("2_52fni")
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65533, 65533, 66, 2, 65533, 1441858, 2, 2, 655426, 65533, 2, 1048642, 1, 65533, 45, 65534, 65533, 45, 65534, 2, 655405, 1, 2, 655405, 3, 65534, 1048621, 3, 1, 1048621, 65556, 65524, 1310730, 5, 5, 655386, 5, 65530, 1441818, 65530, 65530, 26, 65530, 5, 1048602, 65530, 65531, 1048581, 65530, 65532, 1048581, 65530, 65533, 1048581, 65530, 2, 1048581, 65530, 4, 1048581, 65530, 3, 1048581, 65531, 6, 5, 65532, 6, 5, 65533, 6, 5, 4, 6, 5, 3, 6, 5, 2, 6, 5, 5, 4, 1441797, 5, 3, 1441797, 5, 2, 1441797, 5, 65531, 1441797, 5, 65532, 1441797, 5, 65533, 1441797, 4, 65529, 655365, 2, 65529, 655365, 3, 65529, 655365, 65531, 65529, 655365, 65532, 65529, 655365, 65538, 65530, 9, 65539, 65530, 9, 65540, 65530, 9, 131067, 65530, 9, 131068, 65530, 9, 131069, 65530, 9, 65533, 65530, 5, 131066, 65530, 22, 65541, 65530, 1441814, 131066, 5, 1048598, 65541, 5, 655382, 65540, 5, 655369, 65539, 5, 655369, 65538, 5, 655369, 65541, 4, 1441801, 65541, 2, 1441801, 65541, 3, 1441801, 65541, 65531, 1441801, 65541, 65532, 1441801, 65541, 65533, 1441801, 131066, 4, 1048585, 131066, 3, 1048585, 131066, 2, 1048585, 131066, 65533, 1048585, 131066, 65532, 1048585, 131066, 65531, 1048585, 131067, 5, 655369, 131068, 5, 655369, 131069, 5, 655369, 131077, 6, 19, 131076, 6, 19, 131075, 6, 19, 131074, 6, 19, 196605, 6, 19, 196604, 6, 19, 196603, 6, 19, 196602, 6, 19, 196601, 5, 1441811, 196601, 4, 1441811, 196601, 2, 1441811, 196601, 3, 1441811, 196601, 65533, 1441811, 196601, 65532, 1441811, 196601, 65531, 1441811, 196601, 65530, 1441811, 131078, 5, 1048595, 131078, 4, 1048595, 131078, 3, 1048595, 131078, 2, 1048595, 131078, 65530, 1048595, 131078, 65531, 1048595, 131078, 65532, 1048595, 131078, 65533, 1048595, 131077, 65530, 19, 131076, 65530, 19, 131075, 65530, 19, 131074, 65530, 19, 196602, 65530, 19, 196603, 65530, 19, 196604, 65530, 19, 196605, 65530, 19, 262144, 65533, 20, 327679, 3, 20, 196611, 65530, 10, 196610, 65530, 10, 196612, 65530, 10, 196613, 65530, 1441802, 196613, 65531, 1441802, 196613, 65533, 1441802, 196613, 65529, 655370, 196614, 65532, 1048586, 262138, 65530, 1048586, 262138, 65531, 1048586, 262138, 65532, 1048586, 262138, 65533, 1048586, 262138, 2, 1048586, 262138, 3, 1048586, 262138, 4, 1048586, 262138, 5, 1048586, 262138, 6, 10, 262139, 6, 10, 262140, 6, 10, 262141, 6, 10, 196610, 6, 10, 196611, 6, 10, 196612, 6, 10, 196613, 6, 10, 196613, 5, 1441802, 196613, 4, 1441802, 196613, 3, 1441802, 196613, 2, 1441802)
+}
+metadata/_editor_floor_ = Vector3(0, 3, 0)
+
+[node name="GridProps" type="GridMap" parent="." unique_id=980995609]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+cell_center_x = false
+cell_center_y = false
+metadata/_editor_floor_ = Vector3(0, 3, 0)
+
+[node name="Lights" type="Node3D" parent="." unique_id=283858283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="SimpleLightMainRoom1" parent="Lights" unique_id=1934987496 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 2.66, -5)
+
+[node name="SimpleLightMainRoom2" parent="Lights" unique_id=2038620074 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 2.66, -5)
+
+[node name="SimpleLightDockingBay1" parent="Lights" unique_id=1284260847 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 2.66, 7)
+
+[node name="SimpleLightDockingBay2" parent="Lights" unique_id=1415427657 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2.66, 7)
+
+[node name="SimpleLightDockingBay7" parent="Lights" unique_id=1119707759 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2.66, -5)
+
+[node name="SimpleLightDockingBay3" parent="Lights" unique_id=2042944134 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 2.66, 7)
+
+[node name="SimpleLightDockingBay4" parent="Lights" unique_id=1633848237 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 2.66, 7)
+
+[node name="SimpleLightDockingBay6" parent="Lights" unique_id=621054884 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 8, 2.66, -5)
+
+[node name="SimpleLightDockingBay5" parent="Lights" unique_id=1367727631 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 2.66, 7)
+
+[node name="SimpleLightDockingBay8" parent="Lights" unique_id=1688610706 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -8, 2.66, -5)
+
+[node name="BayConsole" parent="." unique_id=299674391 instance=ExtResource("4_0cdor")]
+transform = Transform3D(-3.934025e-08, 0, -0.9, 0, 0.9, 0, 0.9, 0, -3.934025e-08, -3, 0, -7.5)
+
+[node name="BigBoard" type="Node3D" parent="." unique_id=1725112383 groups=["BigBoard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -11.5)
+script = ExtResource("5_egwyk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BigBoard" unique_id=968715474]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, 0, 0, 0)
+mesh = SubResource("PlaneMesh_aygmc")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_aygmc")
+
+[node name="BoardText" type="Label3D" parent="BigBoard" unique_id=76318165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0.001)
+modulate = Color(0.5395237, 0.8055557, 0, 1)
+text = "No Data"
+font_size = 24
+horizontal_alignment = 0
+justification_flags = 162
+
+[node name="Door1" parent="." unique_id=857429570 instance=ExtResource("6_kjata")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, -10)
+required_power = 2
+
+[node name="Door2" parent="." unique_id=1095269818 instance=ExtResource("6_kjata")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -1, -10)
+required_power = 2
+
+[node name="Anchors" type="Node3D" parent="." unique_id=1993173190]
+
+[node name="Anchor1" type="Node3D" parent="Anchors" unique_id=196742063 groups=["Anchor"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -14)
+script = ExtResource("7_52y2s")
+anchor_data = SubResource("Resource_ople6")
+
+[node name="bay-door-blue" parent="Anchors/Anchor1" unique_id=1907028322 groups=["BayDoor"] instance=ExtResource("9_d6f3e")]
+transform = Transform3D(-2.1855694e-08, 0, 0.75, 0, 0.55, 0, -0.5, 0, -3.278354e-08, 0, 2.5, -1.875)
+script = ExtResource("10_4mgt6")
+
+[node name="RotateAnchorButton" parent="Anchors/Anchor1" unique_id=1971285424 instance=ExtResource("11_jos7s")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -6, 0, -2.53)
+
+[node name="Anchor2" type="Node3D" parent="Anchors" unique_id=271790435 groups=["Anchor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+script = ExtResource("7_52y2s")
+anchor_data = SubResource("Resource_n7q1v")
+
+[node name="bay-door-green" parent="Anchors/Anchor2" unique_id=365152928 groups=["BayDoor"] instance=ExtResource("12_o3f7a")]
+transform = Transform3D(-2.1855694e-08, 0, 0.75, 0, 0.55, 0, -0.5, 0, -3.278354e-08, 0, 2.5, -1.875)
+script = ExtResource("10_4mgt6")
+
+[node name="RotateAnchorButton" parent="Anchors/Anchor2" unique_id=1465050445 instance=ExtResource("11_jos7s")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -6, 0, -2.53)
+
+[node name="Anchor3" type="Node3D" parent="Anchors" unique_id=1575165431 groups=["Anchor"]]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 14, 0, 0)
+script = ExtResource("7_52y2s")
+anchor_data = SubResource("Resource_n1wy8")
+
+[node name="bay-door-red" parent="Anchors/Anchor3" unique_id=227266845 groups=["BayDoor"] instance=ExtResource("13_70k2d")]
+transform = Transform3D(-2.1855694e-08, 0, 0.75, 0, 0.55, 0, -0.5, 0, -3.278354e-08, 0, 2.5, -1.875)
+script = ExtResource("10_4mgt6")
+
+[node name="RotateAnchorButton" parent="Anchors/Anchor3" unique_id=1471093033 instance=ExtResource("11_jos7s")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -6, 0, -2.53)
+
+[node name="Anchor4" type="Node3D" parent="Anchors" unique_id=1062399407 groups=["Anchor"]]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14, 0, 0)
+script = ExtResource("7_52y2s")
+anchor_data = SubResource("Resource_n1wy8")
+
+[node name="bay-door-red" parent="Anchors/Anchor4" unique_id=1180678722 groups=["BayDoor"] instance=ExtResource("13_70k2d")]
+transform = Transform3D(-2.1855694e-08, 0, 0.75, 0, 0.55, 0, -0.5, 0, -3.278354e-08, 0, 2.5, -1.875)
+script = ExtResource("10_4mgt6")
+
+[node name="RotateAnchorButton" parent="Anchors/Anchor4" unique_id=149109601 instance=ExtResource("11_jos7s")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -6, 0, -2.53)
+
+[node name="BreakerSwitch" parent="." unique_id=1679353221 groups=["BreakerSwitch"] instance=ExtResource("14_fv7je")]
+transform = Transform3D(-3.090862e-08, 3.0908605e-08, -0.9999996, 0.70710677, 0.7071065, 0, 0.70710677, -0.7071065, -4.371137e-08, -3, 0.1, -7.5)

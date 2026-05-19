@@ -47,14 +47,14 @@ func get_anchor_cardinal_direction() -> String:
 	return cardinal_direction
 		
 
-# actually this is shitty and we just need a world_manager to establish a grid for rooms
 func _set_container_location_to_anchor_location(container: ShipContainer) -> void:
 	var current_container: ShipContainer = owner
 	var normalized_offset: Vector3 = position.normalized()
 	var local_offset = container.container_width * normalized_offset
 	var world_offset = local_offset + current_container.position
 	container.set_position(world_offset)
-	container.rotation = current_container.rotation
+	# hacktastic!
+	container.rotation_degrees.y = [0, 90, 180, -90].pick_random()
 	
 
 

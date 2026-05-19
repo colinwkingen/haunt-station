@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dii7x35uayphk"]
+
+[ext_resource type="PackedScene" uid="uid://dwsj4074yuvah" path="res://station/low_poly_station-tileset.blend" id="1_l1uss"]
+
+[node name="low_poly_station-tileset" unique_id=2037568069 instance=ExtResource("1_l1uss")]

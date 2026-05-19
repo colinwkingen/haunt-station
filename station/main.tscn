@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://btnha2whsheir" path="res://addons/cogito/InventoryPD/cogito_inventory.gd" id="4_wocat"]
 [ext_resource type="PackedScene" uid="uid://cso3ychxevoqf" path="res://station/world.tscn" id="5_37puo"]
 [ext_resource type="Script" uid="uid://dnwgcdyvw8lt3" path="res://station/containers/anchors/anchor_manager.gd" id="7_vbqfq"]
-[ext_resource type="PackedScene" uid="uid://dex30ltpoamr0" path="res://station/station.tscn" id="8_7v2rt"]
+[ext_resource type="PackedScene" uid="uid://cdxlupsm0cogi" path="res://station/lowpoly_test.tscn" id="8_366ur"]
 [ext_resource type="Script" uid="uid://c34wfnd5ha8ri" path="res://station/containers/container_manager.gd" id="8_vjj7l"]
 [ext_resource type="Script" uid="uid://bmc2hctih3oye" path="res://station/world_manager.gd" id="11_366ur"]
 [ext_resource type="Script" uid="uid://buasgl2ejspp6" path="res://station/global_station_state.gd" id="12_po3sy"]
@@ -62,7 +62,7 @@ light_indirect_energy = 0.75
 light_specular = 0.75
 
 [node name="Player" parent="." unique_id=453687854 instance=ExtResource("2_fsnyp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 inventory_data = SubResource("Resource_366ur")
 step_height_camera_lerp = 1.5
 
@@ -71,7 +71,7 @@ script = null
 
 [node name="ContainerManager" type="Node" parent="." unique_id=1037846775 groups=["ContainerManager"]]
 script = ExtResource("8_vjj7l")
-container_scene_array = Array[PackedScene]([ExtResource("8_7v2rt")])
+container_scene_array = Array[PackedScene]([ExtResource("8_366ur")])
 
 [node name="AnchorManager" type="Node" parent="." unique_id=1337837168 groups=["AnchorManager"]]
 script = ExtResource("7_vbqfq")
