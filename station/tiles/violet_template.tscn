@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://8eousrk5abmf"]
+
+[ext_resource type="PackedScene" uid="uid://nxupwdha8fu3" path="res://station/tiles/violet_template.blend" id="1_hwglr"]
+
+[node name="violet_template" unique_id=697710456 instance=ExtResource("1_hwglr")]

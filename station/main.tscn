@@ -7,8 +7,9 @@
 [ext_resource type="Script" uid="uid://btnha2whsheir" path="res://addons/cogito/InventoryPD/cogito_inventory.gd" id="4_wocat"]
 [ext_resource type="PackedScene" uid="uid://cso3ychxevoqf" path="res://station/world.tscn" id="5_37puo"]
 [ext_resource type="Script" uid="uid://dnwgcdyvw8lt3" path="res://station/containers/anchors/anchor_manager.gd" id="7_vbqfq"]
-[ext_resource type="PackedScene" uid="uid://cdxlupsm0cogi" path="res://station/lowpoly_test.tscn" id="8_366ur"]
+[ext_resource type="PackedScene" uid="uid://cdxlupsm0cogi" path="res://station/waste_1.tscn" id="8_366ur"]
 [ext_resource type="Script" uid="uid://c34wfnd5ha8ri" path="res://station/containers/container_manager.gd" id="8_vjj7l"]
+[ext_resource type="PackedScene" uid="uid://duycsji145njm" path="res://station/habitat_1.tscn" id="9_po3sy"]
 [ext_resource type="Script" uid="uid://bmc2hctih3oye" path="res://station/world_manager.gd" id="11_366ur"]
 [ext_resource type="Script" uid="uid://buasgl2ejspp6" path="res://station/global_station_state.gd" id="12_po3sy"]
 
@@ -21,7 +22,7 @@ sky_material = SubResource("PanoramaSkyMaterial_orht3")
 
 [sub_resource type="Environment" id="Environment_ve8pk"]
 background_mode = 2
-background_color = Color(1, 1, 1, 1)
+background_color = Color(0.6396939, 0.59261537, 0.486529, 1)
 sky = SubResource("Sky_cdkcl")
 sky_rotation = Vector3(0, 1.74533, 0.174533)
 ambient_light_source = 2
@@ -41,7 +42,7 @@ volumetric_fog_ambient_inject = 0.1
 volumetric_fog_sky_affect = 0.1
 volumetric_fog_temporal_reprojection_amount = 0.85
 
-[sub_resource type="Resource" id="Resource_366ur"]
+[sub_resource type="Resource" id="Resource_po3sy"]
 resource_local_to_scene = true
 script = ExtResource("4_wocat")
 grid = true
@@ -54,16 +55,9 @@ script = ExtResource("1_wocat")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1636447459]
 environment = SubResource("Environment_ve8pk")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=529151514]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, 17.928604)
-light_color = Color(0.8017899, 0.88300395, 0.8889215, 1)
-light_energy = 0.5
-light_indirect_energy = 0.75
-light_specular = 0.75
-
 [node name="Player" parent="." unique_id=453687854 instance=ExtResource("2_fsnyp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-inventory_data = SubResource("Resource_366ur")
+inventory_data = SubResource("Resource_po3sy")
 step_height_camera_lerp = 1.5
 
 [node name="World" parent="." unique_id=1744721398 instance=ExtResource("5_37puo")]
@@ -71,7 +65,7 @@ script = null
 
 [node name="ContainerManager" type="Node" parent="." unique_id=1037846775 groups=["ContainerManager"]]
 script = ExtResource("8_vjj7l")
-container_scene_array = Array[PackedScene]([ExtResource("8_366ur")])
+container_scene_array = Array[PackedScene]([ExtResource("8_366ur"), ExtResource("9_po3sy")])
 
 [node name="AnchorManager" type="Node" parent="." unique_id=1337837168 groups=["AnchorManager"]]
 script = ExtResource("7_vbqfq")
@@ -82,3 +76,9 @@ script = ExtResource("12_po3sy")
 [node name="WorldManager" type="Node" parent="." unique_id=337810458 groups=["WorldManager"]]
 script = ExtResource("11_366ur")
 metadata/_custom_type_script = "uid://bmc2hctih3oye"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=309742760]
+transform = Transform3D(0.5120428, -0.6073764, 0.6073764, 0, 0.70710677, 0.70710677, -0.8589599, -0.36206895, 0.36206895, 24, 24, 10)
+light_color = Color(0.7851382, 0.99941593, 0.9999997, 1)
+light_energy = 0.2
+shadow_enabled = true

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bkmf2dhvyvi48"]
+
+[ext_resource type="PackedScene" uid="uid://4t6b3h0tkpmi" path="res://station/assets/bigboard_frame.blend" id="1_u05bg"]
+
+[node name="bigboard_frame" unique_id=1706659553 instance=ExtResource("1_u05bg")]

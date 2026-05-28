@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bxm3qamqyrygw"]
+
+[ext_resource type="PackedScene" uid="uid://cbnjmfg2blkpj" path="res://station/assets/button_clear.blend" id="1_8utyp"]
+
+[node name="button_clear" unique_id=409563444 instance=ExtResource("1_8utyp")]

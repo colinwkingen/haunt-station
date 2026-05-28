@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b1yiylu5l47ou"]
+
+[ext_resource type="PackedScene" uid="uid://jc2n1c6lkcu8" path="res://station/assets/lights/light_sconce.blend" id="1_3rcc2"]
+
+[node name="light_sconce" unique_id=2147116101 instance=ExtResource("1_3rcc2")]

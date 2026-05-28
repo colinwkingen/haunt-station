@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bsm0xrcmubp05"]
+
+[ext_resource type="PackedScene" uid="uid://jy3tbqk0a3q8" path="res://station/tiles/teal_template.blend" id="1_dstyp"]
+
+[node name="teal_template" unique_id=1110051939 instance=ExtResource("1_dstyp")]

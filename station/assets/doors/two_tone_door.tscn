@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cjye0g4pfbcmf"]
+
+[ext_resource type="PackedScene" uid="uid://cb40a45jffq8s" path="res://station/assets/doors/two_tone_door.blend" id="1_jg2yg"]
+
+[node name="two_tone_door" unique_id=1270071553 instance=ExtResource("1_jg2yg")]

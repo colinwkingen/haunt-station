@@ -1,5 +1,0 @@
-[gd_scene format=3 uid="uid://ckw4xh44ew60k"]
-
-[ext_resource type="PackedScene" uid="uid://c4qq6etr7i36p" path="res://station/assets/doors/bay-door-red.blend" id="1_j7uy1"]
-
-[node name="bay-door-red" unique_id=227266845 instance=ExtResource("1_j7uy1")]

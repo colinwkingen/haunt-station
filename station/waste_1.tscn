@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://cdxlupsm0cogi"]
+
+[ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/container.gd" id="1_52fni"]
+[ext_resource type="PackedScene" uid="uid://dr8gt3tk8oinv" path="res://station/assets/bay_console.tscn" id="4_0cdor"]
+[ext_resource type="Script" uid="uid://b51d2rud0k0sa" path="res://station/assets/big_board.gd" id="5_egwyk"]
+[ext_resource type="PackedScene" uid="uid://dqpofcx3t21n5" path="res://station/assets/doorway_2.tscn" id="6_kjata"]
+[ext_resource type="Script" uid="uid://jk6cp4oe2gn6" path="res://station/containers/anchors/anchor.gd" id="7_52y2s"]
+[ext_resource type="Script" uid="uid://cjpgxsaekjusf" path="res://station/containers/definitions/container_anchor_data.gd" id="8_u7s7a"]
+[ext_resource type="Script" uid="uid://bwwrcdxxgvbk7" path="res://station/assets/doors/bay_door.gd" id="10_4mgt6"]
+[ext_resource type="PackedScene" uid="uid://0aog0yp3sugo" path="res://station/assets/wall_button.tscn" id="11_jos7s"]
+[ext_resource type="PackedScene" uid="uid://cjye0g4pfbcmf" path="res://station/assets/doors/two_tone_door.tscn" id="13_0cdor"]
+[ext_resource type="PackedScene" uid="uid://b05od7urmjmru" path="res://station/assets/wall_switch.tscn" id="14_fv7je"]
+[ext_resource type="PackedScene" uid="uid://8eousrk5abmf" path="res://station/tiles/violet_template.tscn" id="16_h38vm"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_aygmc"]
+size = Vector2(1.3, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aygmc"]
+albedo_color = Color(0.02617561, 0.026175609, 0.026175609, 1)
+
+[sub_resource type="Resource" id="Resource_ople6"]
+script = ExtResource("8_u7s7a")
+anchor_id = 1
+metadata/_custom_type_script = "uid://cjpgxsaekjusf"
+
+[sub_resource type="Resource" id="Resource_n7q1v"]
+script = ExtResource("8_u7s7a")
+anchor_id = 2
+metadata/_custom_type_script = "uid://cjpgxsaekjusf"
+
+[sub_resource type="Resource" id="Resource_n1wy8"]
+script = ExtResource("8_u7s7a")
+anchor_id = 3
+metadata/_custom_type_script = "uid://cjpgxsaekjusf"
+
+[node name="Station" type="Node3D" unique_id=1958024173 node_paths=PackedStringArray("big_board") groups=["Container"]]
+script = ExtResource("1_52fni")
+big_board = NodePath("BigBoard")
+
+[node name="Lights" type="Node3D" parent="." unique_id=283858283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="Bar2" type="Node3D" parent="Lights" unique_id=1951262114]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -4.0107155)
+
+[node name="BayConsole" parent="." unique_id=299674391 instance=ExtResource("4_0cdor")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -5, 0, 3)
+
+[node name="BigBoard" type="Node3D" parent="." unique_id=1725112383 groups=["BigBoard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.75, -7.95)
+script = ExtResource("5_egwyk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BigBoard" unique_id=968715474]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, -7, 2.7377586, 0)
+mesh = SubResource("PlaneMesh_aygmc")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("StandardMaterial3D_aygmc")
+
+[node name="BoardText" type="Label3D" parent="BigBoard" unique_id=76318165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6, 2.737, 0.001)
+modulate = Color(0.5395237, 0.8055557, 0, 1)
+text = "No Data"
+font_size = 24
+horizontal_alignment = 0
+justification_flags = 162
+
+[node name="Door1" parent="." unique_id=857429570 instance=ExtResource("6_kjata")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, -10)
+required_power = 2
+
+[node name="Door2" parent="." unique_id=1095269818 instance=ExtResource("6_kjata")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -1, -10)
+required_power = 2
+
+[node name="Anchors" type="Node3D" parent="." unique_id=1993173190]
+
+[node name="Anchor1" type="Node3D" parent="Anchors" unique_id=196742063 groups=["Anchor"]]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -14)
+script = ExtResource("7_52y2s")
+anchor_data = SubResource("Resource_ople6")
+
+[node name="RotateAnchorButton" parent="Anchors/Anchor1" unique_id=1971285424 instance=ExtResource("11_jos7s")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -4.483, 2.2, -6.1)
+
+[node name="TwoToneDoor" parent="Anchors/Anchor1" unique_id=1270071553 groups=["BayDoor"] instance=ExtResource("13_0cdor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -5.756)
+script = ExtResource("10_4mgt6")
+
+[node name="Anchor2" type="Node3D" parent="Anchors" unique_id=271790435 groups=["Anchor"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
+script = ExtResource("7_52y2s")
+anchor_data = SubResource("Resource_n7q1v")
+
+[node name="RotateAnchorButton" parent="Anchors/Anchor2" unique_id=1465050445 instance=ExtResource("11_jos7s")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -3, 2.2, -8.401)
+
+[node name="TwoToneDoor" parent="Anchors/Anchor2" unique_id=282779755 groups=["BayDoor"] instance=ExtResource("13_0cdor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -5.75)
+script = ExtResource("10_4mgt6")
+
+[node name="Anchor3" type="Node3D" parent="Anchors" unique_id=1575165431 groups=["Anchor"]]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 14, 0, 0)
+script = ExtResource("7_52y2s")
+anchor_data = SubResource("Resource_n1wy8")
+
+[node name="RotateAnchorButton" parent="Anchors/Anchor3" unique_id=1471093033 instance=ExtResource("11_jos7s")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -3, 2.2, -6.855)
+
+[node name="TwoToneDoor" parent="Anchors/Anchor3" unique_id=437779820 groups=["BayDoor"] instance=ExtResource("13_0cdor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -5.75)
+script = ExtResource("10_4mgt6")
+
+[node name="Anchor4" type="Node3D" parent="Anchors" unique_id=1062399407 groups=["Anchor"]]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14, 0, 0)
+script = ExtResource("7_52y2s")
+anchor_data = SubResource("Resource_n1wy8")
+
+[node name="RotateAnchorButton" parent="Anchors/Anchor4" unique_id=149109601 instance=ExtResource("11_jos7s")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -3, 2.2, -6.597)
+
+[node name="TwoToneDoor" parent="Anchors/Anchor4" unique_id=118036470 groups=["BayDoor"] instance=ExtResource("13_0cdor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -5.75)
+script = ExtResource("10_4mgt6")
+
+[node name="BreakerSwitch" parent="." unique_id=1679353221 groups=["BreakerSwitch"] instance=ExtResource("14_fv7je")]
+transform = Transform3D(-4.3711385e-08, 0, -0.9999996, 0, 0.9999995, 0, 0.99999994, 0, -4.371137e-08, -6.363, 2, -7.5)
+
+[node name="violet_template" parent="." unique_id=697710456 instance=ExtResource("16_h38vm")]

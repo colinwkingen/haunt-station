@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cfhywen8yyhi2"]
+
+[ext_resource type="PackedScene" uid="uid://dslc4c3exobkn" path="res://station/assets/lights/simple-station-light.blend" id="1_4tvih"]
+
+[node name="simple-station-light" unique_id=1934987496 instance=ExtResource("1_4tvih")]
+
+[node name="SmallStationLightEmpty" parent="." index="0" unique_id=1172629076]
+transform = Transform3D(-0.25, 2.1855694e-08, 0, -2.1855694e-08, -0.25, 0, 0, 0, 0.125, 0, 0, 0)
+
+[node name="Point" parent="SmallStationLightEmpty" index="5" unique_id=1132099071]
+transform = Transform3D(4, 0, 0, 0, -3.496911e-07, 4, 0, -8, -6.993822e-07, -3.240055e-08, 0.02938053, 0)
+light_color = Color(0.83874255, 0.8036569, 0.67700636, 1)
+light_energy = 0.0
+light_size = 4.0
+omni_range = 128.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1" unique_id=626652038]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+light_color = Color(0.9194371, 0.91293526, 0.8877862, 1)
+light_indirect_energy = 0.75
+light_volumetric_fog_energy = 0.75
+omni_range = 128.0
+omni_attenuation = 2.0

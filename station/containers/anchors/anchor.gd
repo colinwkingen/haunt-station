@@ -54,7 +54,7 @@ func _set_container_location_to_anchor_location(container: ShipContainer) -> voi
 	var world_offset = local_offset + current_container.position
 	container.set_position(world_offset)
 	# hacktastic!
-	container.rotation_degrees.y = [0, 90, 180, -90].pick_random()
+	#container.rotation_degrees.y = [0, 90, 180, -90].pick_random()
 	
 
 
