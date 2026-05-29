@@ -85,8 +85,10 @@ func get_door_requirement_dict() -> Dictionary:
 func update_sector_power(sector: String, value: int) -> void:
 	print("update sector power!!!")
 	power_by_sector[sector] += value
+	total_power += value
 	inform_doors_of_update()
 	update_bigboard.emit(power_by_sector)
+	SignalBus.update_hud(total_power)
 	
 func refresh_sector_power() -> void:
 	update_bigboard.emit(power_by_sector)
