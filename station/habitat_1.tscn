@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://duycsji145njm"]
 
 [ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/container.gd" id="1_44g5b"]
+[ext_resource type="PackedScene" uid="uid://djkain1itxw5m" path="res://station/assets/lights/light_bar.tscn" id="2_urbix"]
 [ext_resource type="PackedScene" uid="uid://dr8gt3tk8oinv" path="res://station/assets/bay_console.tscn" id="5_w144k"]
 [ext_resource type="PackedScene" uid="uid://bkmf2dhvyvi48" path="res://station/assets/bigboard_frame.tscn" id="6_44g5b"]
 [ext_resource type="Script" uid="uid://b51d2rud0k0sa" path="res://station/assets/big_board.gd" id="6_j4vqc"]
@@ -34,6 +35,12 @@ big_board = NodePath("BigBoard")
 
 [node name="Lights" type="Node3D" parent="." unique_id=283858283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="LightBar" parent="Lights" unique_id=148329538 instance=ExtResource("2_urbix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1.094, 0)
+
+[node name="LightBar2" parent="Lights" unique_id=1090553791 instance=ExtResource("2_urbix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -1.094, 0)
 
 [node name="BayConsole" parent="." unique_id=299674391 instance=ExtResource("5_w144k")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -5, 0, 3)
@@ -113,6 +120,6 @@ script = ExtResource("12_vrn5r")
 
 [node name="BreakerSwitch" parent="." unique_id=1679353221 node_paths=PackedStringArray("consumers") groups=["BreakerSwitch"] instance=ExtResource("13_633m1")]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999996, 0, 0.9999995, 0, 0.99999994, 0, -4.371137e-08, -6.363, 2, -7.92)
-consumers = [NodePath(""), NodePath("")]
+consumers = [NodePath("../Lights/LightBar"), NodePath("../Lights/LightBar2")]
 
 [node name="teal_template" parent="." unique_id=1110051939 instance=ExtResource("14_44g5b")]

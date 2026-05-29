@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://di4k8g4ghe8mo"]
+
+[ext_resource type="FontFile" uid="uid://buqfn8ilmreu8" path="res://m6x11.ttf" id="1_0yg8v"]
+[ext_resource type="Script" uid="uid://b2l13elgo1bed" path="res://station/player_overlay/hud.gd" id="1_k6ryh"]
+
+[node name="HUD" type="CanvasLayer" unique_id=2125407731]
+script = ExtResource("1_k6ryh")
+
+[node name="PowerLabel" type="Label" parent="." unique_id=921235394]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.0
+offset_right = 28.0
+offset_bottom = 112.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.2737259, 0.90157014, 0, 1)
+theme_override_colors/font_outline_color = Color(0.36508796, 0.36508796, 0.36508796, 1)
+theme_override_fonts/font = ExtResource("1_0yg8v")
+theme_override_font_sizes/font_size = 128
+text = "0"

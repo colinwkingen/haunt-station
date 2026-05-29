@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://djkain1itxw5m"]
+
+[ext_resource type="PackedScene" uid="uid://ccf85t86osjpx" path="res://station/assets/lights/light_bar.blend" id="1_a7muu"]
+[ext_resource type="Script" uid="uid://ccnupghpqsqxn" path="res://station/assets/lights/simple_switch.gd" id="2_b0613"]
+
+[node name="LightBar" unique_id=148329538 node_paths=PackedStringArray("consumer_nodes") instance=ExtResource("1_a7muu")]
+script = ExtResource("2_b0613")
+consumer_nodes = [NodePath("SpotLight3D"), NodePath("OmniLight3D")]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="1" unique_id=654699109]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.75, 0)
+spot_range = 24.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2" unique_id=569651469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
+light_color = Color(0.80621445, 0.84341776, 0.8660745, 1)
+light_energy = 5.0
+omni_range = 24.0

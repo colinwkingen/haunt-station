@@ -48,6 +48,7 @@ func add_container_atts(container_data: ContainerData) -> void:
 	
 	update_bigboard.emit(power_by_sector)
 	inform_doors_of_update()
+	SignalBus.update_hud(total_power)
 
 func remove_container_atts(container_data: ContainerData) -> void:
 	total_power -= container_data.power_level
@@ -57,6 +58,7 @@ func remove_container_atts(container_data: ContainerData) -> void:
 	
 	update_bigboard.emit(power_by_sector)
 	inform_doors_of_update()
+	SignalBus.update_hud(total_power)
 	
 func get_colors_str() -> String:
 	var colors_str: String

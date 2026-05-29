@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cdxlupsm0cogi"]
 
 [ext_resource type="Script" uid="uid://cxjkdv6esxlgg" path="res://station/containers/variants/container.gd" id="1_52fni"]
+[ext_resource type="PackedScene" uid="uid://cfhywen8yyhi2" path="res://station/assets/lights/simple_station_light.tscn" id="3_h38vm"]
+[ext_resource type="Script" uid="uid://ccnupghpqsqxn" path="res://station/assets/lights/simple_switch.gd" id="3_y88ua"]
 [ext_resource type="PackedScene" uid="uid://dr8gt3tk8oinv" path="res://station/assets/bay_console.tscn" id="4_0cdor"]
 [ext_resource type="Script" uid="uid://b51d2rud0k0sa" path="res://station/assets/big_board.gd" id="5_egwyk"]
 [ext_resource type="PackedScene" uid="uid://dqpofcx3t21n5" path="res://station/assets/doorway_2.tscn" id="6_kjata"]
@@ -42,6 +44,65 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
 [node name="Bar2" type="Node3D" parent="Lights" unique_id=1951262114]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, -4.0107155)
+
+[node name="SimpleLight" parent="Lights/Bar2" unique_id=1934987496 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight5" parent="Lights/Bar2" unique_id=1313001039 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight6" parent="Lights/Bar2" unique_id=1775885684 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight7" parent="Lights/Bar2" unique_id=929335674 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight2" parent="Lights/Bar2" unique_id=2078144695 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight3" parent="Lights/Bar2" unique_id=1629829439 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight4" parent="Lights/Bar2" unique_id=563754612 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="Bar1" type="Node3D" parent="Lights" unique_id=488052351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 4)
+
+[node name="SimpleLight" parent="Lights/Bar1" unique_id=1539384661 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight5" parent="Lights/Bar1" unique_id=2124219318 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight6" parent="Lights/Bar1" unique_id=1974300357 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight7" parent="Lights/Bar1" unique_id=810117087 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight2" parent="Lights/Bar1" unique_id=83295178 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight3" parent="Lights/Bar1" unique_id=336288927 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 4, 2.65, 0)
+script = ExtResource("3_y88ua")
+
+[node name="SimpleLight4" parent="Lights/Bar1" unique_id=1727315360 instance=ExtResource("3_h38vm")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 2.65, 0)
+script = ExtResource("3_y88ua")
 
 [node name="BayConsole" parent="." unique_id=299674391 instance=ExtResource("4_0cdor")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -5, 0, 3)
@@ -122,7 +183,8 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -3, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -5.75)
 script = ExtResource("10_4mgt6")
 
-[node name="BreakerSwitch" parent="." unique_id=1679353221 groups=["BreakerSwitch"] instance=ExtResource("14_fv7je")]
+[node name="BreakerSwitch" parent="." unique_id=1679353221 node_paths=PackedStringArray("consumers") groups=["BreakerSwitch"] instance=ExtResource("14_fv7je")]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999996, 0, 0.9999995, 0, 0.99999994, 0, -4.371137e-08, -6.363, 2, -7.5)
+consumers = [NodePath("../Lights/Bar2/SimpleLight"), NodePath("../Lights/Bar2/SimpleLight5"), NodePath("../Lights/Bar2/SimpleLight6"), NodePath("../Lights/Bar2/SimpleLight7"), NodePath("../Lights/Bar2/SimpleLight2"), NodePath("../Lights/Bar2/SimpleLight3"), NodePath("../Lights/Bar2/SimpleLight4")]
 
 [node name="violet_template" parent="." unique_id=697710456 instance=ExtResource("16_h38vm")]

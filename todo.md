@@ -1,17 +1,19 @@
 1. prepend room designation to the bigboard
-2. new bigboard model
-3. new door/fame model
-4. power threshold for lights in rooms with designated sector
-5. add rotation to new container randomosity?
-6. extend width to allow for join segment between scenes
+2. power threshold for lights in rooms with designated sector
+3. max width of world, keep door closed. indicate somehow
+4. make breakers update HUD
+5. replace crap ass button with new clear one (blue to red)
 
-7. create all new tileset (ugh) <-- it is time!!
-	7B. tilesets are over, blender is my only friend
-	7C, door, doorframe, light, better button(s), cryo
-
-8. think about... do you rotate through room choices or is it truly random
-	8B. Can you go back or do they lock behind you
-9. max width of world, keep door closed. indicate somehow
+Door behavior:
+	1. Doors are locked till power threshold met
+	2. Doors start closed, button opens ( and props next room)
+	3. Rooms specific door power needs
+	
+Other Power consumers:
+	1. Some sort of generator provides more
+	2. Some sort of computer and gas thingy consumes
+	3. More button styles
+	
 
 
 

@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://cfhywen8yyhi2"]
 
 [ext_resource type="PackedScene" uid="uid://dslc4c3exobkn" path="res://station/assets/lights/simple-station-light.blend" id="1_4tvih"]
+[ext_resource type="Script" uid="uid://ccnupghpqsqxn" path="res://station/assets/lights/simple_switch.gd" id="2_2f54i"]
 
-[node name="simple-station-light" unique_id=1934987496 instance=ExtResource("1_4tvih")]
+[node name="simple-station-light" unique_id=1934987496 node_paths=PackedStringArray("consumer_nodes") instance=ExtResource("1_4tvih")]
+script = ExtResource("2_2f54i")
+consumer_nodes = [NodePath("OmniLight3D"), NodePath("SmallStationLightEmpty/Point")]
 
 [node name="SmallStationLightEmpty" parent="." index="0" unique_id=1172629076]
 transform = Transform3D(-0.25, 2.1855694e-08, 0, -2.1855694e-08, -0.25, 0, 0, 0, 0.125, 0, 0, 0)
 
 [node name="Point" parent="SmallStationLightEmpty" index="5" unique_id=1132099071]
-transform = Transform3D(4, 0, 0, 0, -3.496911e-07, 4, 0, -8, -6.993822e-07, -3.240055e-08, 0.02938053, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.240055e-08, 0.02938053, 0)
 light_color = Color(0.83874255, 0.8036569, 0.67700636, 1)
 light_energy = 0.0
 light_size = 4.0
