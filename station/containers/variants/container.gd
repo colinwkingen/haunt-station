@@ -10,7 +10,6 @@ var container_id: int
 @export var container_data: ContainerData
 @export var container_width: int = 24
 @export var indicator_light: OmniLight3D
-
 @export var big_board: BigBoard
 
 func _ready() -> void:
@@ -62,14 +61,9 @@ func _generate_label() -> void:
 
 
 func _label_append_line(key, value) -> void:
-	#container_label.add_text(line)
-	#container_label.newline()
 	container_label.text += (key + str(value) + "\n")
 	
 func _label_big_board_with_coords() -> void:
-	var big_board: BigBoard
-	for child in get_children():
-		if child is BigBoard:
-			print("found bigboard")
-			big_board = child
-	big_board.update_coords(str(ManagerBus.world_manager.get_grid_position(self)))
+	if big_board:
+		big_board.update_coords(str(ManagerBus.world_manager.get_grid_position(self)))
+		big_board.update_container_sector(container_data.sector)

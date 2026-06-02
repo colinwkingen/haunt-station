@@ -18,4 +18,9 @@ Other Power consumers:
 
 
 # ["DOCKING", "ENGINEERING", "HABITAT", "OPERATIONS", "WASTE_PROCESSING"]
-List the rooms:
+
+Loop:
+	1. Choose best direction
+	2. Allocate resources or solve puzzle to open door
+	3. Narrative beat
+	4. Die/Continue
