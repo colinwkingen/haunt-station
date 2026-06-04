@@ -66,6 +66,16 @@ func _is_container_spot_available() -> bool:
 	var adjacent_spot: Vector3i = current_container_grid_coords + Vector3i(position.normalized())
 	return !ManagerBus.world_manager.is_location_occupied(adjacent_spot)
 
+
+# right now 'container_rotate_button' takes a forward bool
+# that switches back and forth through the container list
+# the door defaults to open
+
+# it should default to closed
+# we need separate open/close buttons for door that work if power available
+# we need seperate forward/back selection buttons and a third select that locks it in
+
+
 	
 func dock_next_container() -> void:
 	# don't do anything if world spot is occupied
@@ -120,11 +130,8 @@ func container_rotate_button_pressed(forward: bool) -> void:
 		await dock_next_container()
 	else:
 		await dock_previous_container()
-	# one frame wait, maybe not necessary
-	# without it all actions are processed in one frame tho
-	# await get_tree().process_frame
-	#container_swap_finished.emit()
-	await get_tree().create_timer(1.0).timeout
+
+	#await get_tree().create_timer(1.0).timeout
 	await bay_door.open_door_async()
 	is_switching = false
 	

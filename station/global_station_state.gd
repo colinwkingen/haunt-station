@@ -81,6 +81,8 @@ func get_door_requirement_dict() -> Dictionary:
 		"total_colors": total_colors.duplicate()
 	}
 	
+func can_reduce_power_by(amount: int):
+	return total_power - amount > 0	
 
 func update_sector_power(sector: String, value: int) -> void:
 	print("update sector power!!!")

@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://dr8gt3tk8oinv" path="res://station/assets/bay_console.tscn" id="5_w144k"]
 [ext_resource type="PackedScene" uid="uid://bkmf2dhvyvi48" path="res://station/assets/bigboard_frame.tscn" id="6_44g5b"]
 [ext_resource type="Script" uid="uid://b51d2rud0k0sa" path="res://station/assets/big_board.gd" id="6_j4vqc"]
-[ext_resource type="PackedScene" uid="uid://dqpofcx3t21n5" path="res://station/assets/doorway_2.tscn" id="7_2ppx6"]
 [ext_resource type="Script" uid="uid://jk6cp4oe2gn6" path="res://station/containers/anchors/anchor.gd" id="8_rxdjl"]
 [ext_resource type="Script" uid="uid://cjpgxsaekjusf" path="res://station/containers/definitions/container_anchor_data.gd" id="9_x523t"]
 [ext_resource type="PackedScene" uid="uid://0aog0yp3sugo" path="res://station/assets/wall_button.tscn" id="10_cextr"]
 [ext_resource type="PackedScene" uid="uid://cjye0g4pfbcmf" path="res://station/assets/doors/two_tone_door.tscn" id="11_heg0y"]
+[ext_resource type="PackedScene" uid="uid://bv2ybhr03tl86" path="res://station/assets/button_clear.tscn" id="11_urbix"]
 [ext_resource type="Script" uid="uid://bwwrcdxxgvbk7" path="res://station/assets/doors/bay_door.gd" id="12_vrn5r"]
 [ext_resource type="PackedScene" uid="uid://b05od7urmjmru" path="res://station/assets/wall_switch.tscn" id="13_633m1"]
 [ext_resource type="PackedScene" uid="uid://bsm0xrcmubp05" path="res://station/tiles/teal_template.tscn" id="14_44g5b"]
@@ -60,14 +60,6 @@ justification_flags = 162
 [node name="bigboard_frame" parent="BigBoard" unique_id=1706659553 instance=ExtResource("6_44g5b")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7.117, -1.352, 0.1)
 
-[node name="Door1" parent="." unique_id=857429570 instance=ExtResource("7_2ppx6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -1, -10)
-required_power = 2
-
-[node name="Door2" parent="." unique_id=1095269818 instance=ExtResource("7_2ppx6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, -1, -10)
-required_power = 2
-
 [node name="Anchors" type="Node3D" parent="." unique_id=1993173190]
 
 [node name="Anchor1" type="Node3D" parent="Anchors" unique_id=196742063 groups=["Anchor"]]
@@ -79,8 +71,16 @@ anchor_data = SubResource("Resource_ople6")
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -4.483, 2.2, -6.1)
 
 [node name="TwoToneDoor" parent="Anchors/Anchor1" unique_id=1270071553 groups=["BayDoor"] instance=ExtResource("11_heg0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -5.756)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 script = ExtResource("12_vrn5r")
+
+[node name="ButtonClear" parent="Anchors/Anchor1" unique_id=135473490 node_paths=PackedStringArray("interact_objects") instance=ExtResource("11_urbix")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.875, 1.25, -5.000001)
+interact_objects = [NodePath("../TwoToneDoor")]
+
+[node name="ButtonClear2" parent="Anchors/Anchor1" unique_id=1707646206 node_paths=PackedStringArray("interact_objects") instance=ExtResource("11_urbix")]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -2.5040004, 1.2, -6.124996)
+interact_objects = [NodePath("../TwoToneDoor")]
 
 [node name="Anchor2" type="Node3D" parent="Anchors" unique_id=271790435 groups=["Anchor"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
@@ -91,8 +91,16 @@ anchor_data = SubResource("Resource_n7q1v")
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -3, 2.2, -8.401)
 
 [node name="TwoToneDoor" parent="Anchors/Anchor2" unique_id=282779755 groups=["BayDoor"] instance=ExtResource("11_heg0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -5.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 script = ExtResource("12_vrn5r")
+
+[node name="ButtonClear" parent="Anchors/Anchor2" unique_id=1680951870 node_paths=PackedStringArray("interact_objects") instance=ExtResource("11_urbix")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.875, 1.25, -5.000001)
+interact_objects = [NodePath("../TwoToneDoor")]
+
+[node name="ButtonClear2" parent="Anchors/Anchor2" unique_id=1159759861 node_paths=PackedStringArray("interact_objects") instance=ExtResource("11_urbix")]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -2.5040004, 1.2, -6.124996)
+interact_objects = [NodePath("../TwoToneDoor")]
 
 [node name="Anchor3" type="Node3D" parent="Anchors" unique_id=1575165431 groups=["Anchor"]]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 14, 0, 0)
@@ -103,8 +111,16 @@ anchor_data = SubResource("Resource_n1wy8")
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -3, 2.2, -6.855)
 
 [node name="TwoToneDoor" parent="Anchors/Anchor3" unique_id=437779820 groups=["BayDoor"] instance=ExtResource("11_heg0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -5.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 script = ExtResource("12_vrn5r")
+
+[node name="ButtonClear" parent="Anchors/Anchor3" unique_id=825508512 node_paths=PackedStringArray("interact_objects") instance=ExtResource("11_urbix")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.875, 1.25, -5.000001)
+interact_objects = [NodePath("../TwoToneDoor")]
+
+[node name="ButtonClear2" parent="Anchors/Anchor3" unique_id=851548432 node_paths=PackedStringArray("interact_objects") instance=ExtResource("11_urbix")]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -2.5040004, 1.2, -6.124996)
+interact_objects = [NodePath("../TwoToneDoor")]
 
 [node name="Anchor4" type="Node3D" parent="Anchors" unique_id=1062399407 groups=["Anchor"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14, 0, 0)
@@ -115,8 +131,16 @@ anchor_data = SubResource("Resource_n1wy8")
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -3, 2.2, -6.597)
 
 [node name="TwoToneDoor" parent="Anchors/Anchor4" unique_id=118036470 groups=["BayDoor"] instance=ExtResource("11_heg0y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -5.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)
 script = ExtResource("12_vrn5r")
+
+[node name="ButtonClear" parent="Anchors/Anchor4" unique_id=1416791262 node_paths=PackedStringArray("interact_objects") instance=ExtResource("11_urbix")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -1.875, 1.25, -5.000001)
+interact_objects = [NodePath("../TwoToneDoor")]
+
+[node name="ButtonClear2" parent="Anchors/Anchor4" unique_id=1290240982 node_paths=PackedStringArray("interact_objects") instance=ExtResource("11_urbix")]
+transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -2.5040004, 1.2, -6.124996)
+interact_objects = [NodePath("../TwoToneDoor")]
 
 [node name="BreakerSwitch" parent="." unique_id=1679353221 node_paths=PackedStringArray("consumers") groups=["BreakerSwitch"] instance=ExtResource("13_633m1")]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999996, 0, 0.9999995, 0, 0.99999994, 0, -4.371137e-08, -6.363, 2, -7.92)
@@ -124,3 +148,4 @@ consumers = [NodePath("../Lights/LightBar"), NodePath("../Lights/LightBar2")]
 set_sector_to_parent = true
 
 [node name="teal_template" parent="." unique_id=1110051939 instance=ExtResource("14_44g5b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0025277138, -0.005653858, -0.0018298626)

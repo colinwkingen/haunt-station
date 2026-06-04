@@ -43,7 +43,7 @@ volumetric_fog_ambient_inject = 0.1
 volumetric_fog_sky_affect = 0.1
 volumetric_fog_temporal_reprojection_amount = 0.85
 
-[sub_resource type="Resource" id="Resource_lv11q"]
+[sub_resource type="Resource" id="Resource_4hchv"]
 resource_local_to_scene = true
 script = ExtResource("4_wocat")
 grid = true
@@ -58,7 +58,8 @@ environment = SubResource("Environment_ve8pk")
 
 [node name="Player" parent="." unique_id=453687854 instance=ExtResource("2_fsnyp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-inventory_data = SubResource("Resource_lv11q")
+inventory_data = SubResource("Resource_4hchv")
+INVERT_Y_AXIS = false
 step_height_camera_lerp = 1.5
 
 [node name="HUD" parent="Player" unique_id=2125407731 instance=ExtResource("6_4hchv")]
