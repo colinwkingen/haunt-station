@@ -1,10 +1,7 @@
 class_name ShipContainer
 extends Node3D
 
-@export var container_label: Label3D
-
 var container_id: int
-
 
 @export var container_width: int = 24
 

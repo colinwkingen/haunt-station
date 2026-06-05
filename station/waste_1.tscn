@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dr8gt3tk8oinv" path="res://station/assets/bay_console.tscn" id="4_0cdor"]
 [ext_resource type="Script" uid="uid://b51d2rud0k0sa" path="res://station/assets/big_board.gd" id="5_egwyk"]
 [ext_resource type="Script" uid="uid://jk6cp4oe2gn6" path="res://station/containers/anchors/anchor.gd" id="7_52y2s"]
-[ext_resource type="Script" uid="uid://cjpgxsaekjusf" path="res://station/containers/definitions/container_anchor_data.gd" id="8_u7s7a"]
 [ext_resource type="Script" uid="uid://bwwrcdxxgvbk7" path="res://station/assets/doors/bay_door.gd" id="10_4mgt6"]
 [ext_resource type="PackedScene" uid="uid://bv2ybhr03tl86" path="res://station/assets/button_clear.tscn" id="10_pe5mx"]
 [ext_resource type="PackedScene" uid="uid://0aog0yp3sugo" path="res://station/assets/wall_button.tscn" id="11_jos7s"]
@@ -19,21 +18,6 @@ size = Vector2(1.3, 1.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aygmc"]
 albedo_color = Color(0.02617561, 0.026175609, 0.026175609, 1)
-
-[sub_resource type="Resource" id="Resource_ople6"]
-script = ExtResource("8_u7s7a")
-anchor_id = 1
-metadata/_custom_type_script = "uid://cjpgxsaekjusf"
-
-[sub_resource type="Resource" id="Resource_n7q1v"]
-script = ExtResource("8_u7s7a")
-anchor_id = 2
-metadata/_custom_type_script = "uid://cjpgxsaekjusf"
-
-[sub_resource type="Resource" id="Resource_n1wy8"]
-script = ExtResource("8_u7s7a")
-anchor_id = 3
-metadata/_custom_type_script = "uid://cjpgxsaekjusf"
 
 [node name="Station" type="Node3D" unique_id=1958024173 node_paths=PackedStringArray("big_board") groups=["Container"]]
 script = ExtResource("1_52fni")
@@ -120,7 +104,6 @@ justification_flags = 162
 [node name="Anchor1" type="Node3D" parent="Anchors" unique_id=196742063 groups=["Anchor"]]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -14)
 script = ExtResource("7_52y2s")
-anchor_data = SubResource("Resource_ople6")
 
 [node name="RotateAnchorButton" parent="Anchors/Anchor1" unique_id=1971285424 instance=ExtResource("11_jos7s")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -4.483, 2.2, -6.1)
@@ -140,7 +123,6 @@ interact_objects = [NodePath("../TwoToneDoor")]
 [node name="Anchor2" type="Node3D" parent="Anchors" unique_id=271790435 groups=["Anchor"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
 script = ExtResource("7_52y2s")
-anchor_data = SubResource("Resource_n7q1v")
 
 [node name="RotateAnchorButton" parent="Anchors/Anchor2" unique_id=1465050445 instance=ExtResource("11_jos7s")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -3, 2.2, -8.401)
@@ -164,7 +146,6 @@ target_anchor = NodePath("..")
 [node name="Anchor3" type="Node3D" parent="Anchors" unique_id=1575165431 groups=["Anchor"]]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 14, 0, 0)
 script = ExtResource("7_52y2s")
-anchor_data = SubResource("Resource_n1wy8")
 
 [node name="RotateAnchorButton" parent="Anchors/Anchor3" unique_id=1471093033 instance=ExtResource("11_jos7s")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -3, 2.2, -6.855)
@@ -184,7 +165,6 @@ interact_objects = [NodePath("../TwoToneDoor")]
 [node name="Anchor4" type="Node3D" parent="Anchors" unique_id=1062399407 groups=["Anchor"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14, 0, 0)
 script = ExtResource("7_52y2s")
-anchor_data = SubResource("Resource_n1wy8")
 
 [node name="RotateAnchorButton" parent="Anchors/Anchor4" unique_id=149109601 instance=ExtResource("11_jos7s")]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 2.7499998, 1.2, -6.0777392)

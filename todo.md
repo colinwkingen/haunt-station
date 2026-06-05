@@ -22,7 +22,10 @@ Other Power consumers:
 	3. More button styles
 	
 
-
+How should rooms/containers actually be tracked?
+	1. They should be registered on the world grid when finalized
+	2. when you go to a door, you should be able to rotate through a list of potential selections
+	3. they... don't have an id yet then?
 
 # ["DOCKING", "ENGINEERING", "HABITAT", "OPERATIONS", "WASTE_PROCESSING"]
 

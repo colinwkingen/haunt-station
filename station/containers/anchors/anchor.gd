@@ -5,7 +5,6 @@ extends Node3D
 var anchor_id: int = -1
 @export var anchor_name: String
 @export var cardinal_direction: String
-@export var anchor_data: ContainerAnchorData
 
 
 var container_node: ShipContainer
@@ -146,6 +145,7 @@ func next_room() -> void:
 		#different sound
 		print("spot occupied, abort docking")
 		return
+	container_id +=1
 	# spawns on top of current!
 	var container: ShipContainer = ManagerBus.container_manager.get_next_available_container(container_id)
 	container.unstage()
