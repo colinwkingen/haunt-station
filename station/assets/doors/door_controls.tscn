@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://by8hcq3nk66lg"]
+
+[ext_resource type="PackedScene" uid="uid://klitl44idp1" path="res://station/assets/doors/door_controls.blend" id="1_1y0pi"]
+[ext_resource type="Script" uid="uid://dcd8168tohjmg" path="res://station/assets/doors/door_controls.gd" id="2_ia2ej"]
+[ext_resource type="FontFile" uid="uid://buqfn8ilmreu8" path="res://m6x11.ttf" id="2_ldosg"]
+[ext_resource type="PackedScene" uid="uid://bv2ybhr03tl86" path="res://station/assets/button_clear.tscn" id="3_ldosg"]
+
+[node name="DoorControls" unique_id=1428249444 node_paths=PackedStringArray("room_description") instance=ExtResource("1_1y0pi")]
+script = ExtResource("2_ia2ej")
+room_description = NodePath("RoomDescription")
+
+[node name="door_controls" parent="." index="0" unique_id=1857728290]
+transform = Transform3D(1, 8.742278e-08, 8.742278e-08, 8.742278e-08, -1, 0, 8.742278e-08, 7.642742e-15, -1, 0, 0, 0)
+
+[node name="RoomDescription" type="Label3D" parent="." index="1" unique_id=1885855752]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.02538545)
+modulate = Color(0, 1, 0, 1)
+outline_modulate = Color(0, 1, 0, 1)
+text = "Foo Bar"
+font = ExtResource("2_ldosg")
+font_size = 24
+outline_size = 0
+
+[node name="ButtonClear1" parent="." index="2" unique_id=135473490 node_paths=PackedStringArray("interact_objects") instance=ExtResource("3_ldosg")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -0.275, -0.1, 0.113)
+interact_objects = [NodePath("..")]
+with_named_method = true
+named_method = "previous_room"
+
+[node name="ButtonClear2" parent="." index="3" unique_id=1058646145 node_paths=PackedStringArray("interact_objects") instance=ExtResource("3_ldosg")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, -0.1, 0.113)
+interact_objects = [NodePath("..")]
+with_named_method = true
+named_method = "next_room"
+
+[node name="ButtonClear3" parent="." index="4" unique_id=1571402481 node_paths=PackedStringArray("interact_objects") instance=ExtResource("3_ldosg")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0.275, -0.1, 0.113)
+interact_objects = [NodePath("..")]
+with_named_method = true
+named_method = "lock_in_room"

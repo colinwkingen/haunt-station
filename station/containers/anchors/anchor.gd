@@ -6,7 +6,14 @@ var anchor_id: int = -1
 @export var anchor_name: String
 @export var cardinal_direction: String
 @export var anchor_data: ContainerAnchorData
+#@export var join_door: Node3D
+
+signal temp_container_switched(container_data: ContainerData)
+
 var container_node: ShipContainer
+
+var temp_container_node: ShipContainer
+
 var container_id: int
 var is_switching: bool
 # may not just be the previous int
@@ -83,7 +90,6 @@ func dock_next_container() -> void:
 		print("spot occupied, abort docking")
 		return
 	print("continuing with dock next container...")
-	
 	var container: ShipContainer = ManagerBus.container_manager.get_next_available_container(container_id)
 	print("got next available container? : %s"%container)
 	if container:
@@ -91,7 +97,6 @@ func dock_next_container() -> void:
 			# unstage should remove from world grid
 			container_node.unstage()
 			container_id_history.append(container_id)
-		
 		set_container(container)
 		ManagerBus.world_manager.register_container_simple(container)
 		container.stage()
@@ -101,9 +106,7 @@ func dock_previous_container() -> void:
 	if container_id_history.is_empty():
 		return
 	print("container id history: %s" % str(container_id_history))
-		
 	print("container id at -1: %s" % container_id_history[-1])
-		
 	var container: ShipContainer = ManagerBus.container_manager.get_container_by_id(container_id_history[-1])
 	if container:
 		container_id_history.pop_back()
@@ -130,9 +133,49 @@ func container_rotate_button_pressed(forward: bool) -> void:
 		await dock_next_container()
 	else:
 		await dock_previous_container()
-
 	#await get_tree().create_timer(1.0).timeout
 	await bay_door.open_door_async()
 	is_switching = false
 	
+	# NEW select behaviors: next/previous for selection, then a LOCK button to set it
+	
+func next_room() -> void:
+	print("hit next room")
+	if is_switching:
+		return
+	print("past gates")
+	if !_is_container_spot_available():
+		#different sound
+		print("spot occupied, abort docking")
+		return
+	# spawns on top of current!
+	var container: ShipContainer = ManagerBus.container_manager.get_next_available_container(container_id)
+	container.unstage()
+	if container:
+		print("container created")
+		temp_container_node = container
+		container_id_history.append(container_id)
+		
+		
+func previous_room() -> void:
+	if is_switching or container_id_history.size() == 0:
+		return
+	if !_is_container_spot_available():
+		#different sound
+		print("spot occupied, abort docking")
+		return
+	var container: ShipContainer = ManagerBus.container_manager.get_next_available_container(container_id_history[-1])
+	if container:
+		temp_container_node = container
+		container_id_history.pop_back()
+	
+	
+func lock_in_room() -> void:
+	if container_node:
+		container_node.unstage()
+		container_id_history.append(container_id)
+	if temp_container_node:
+		set_container(temp_container_node)
+		ManagerBus.world_manager.register_container_simple(temp_container_node)
+		temp_container_node.stage()
 	

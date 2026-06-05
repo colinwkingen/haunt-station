@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bwwrcdxxgvbk7" path="res://station/assets/doors/bay_door.gd" id="10_4mgt6"]
 [ext_resource type="PackedScene" uid="uid://bv2ybhr03tl86" path="res://station/assets/button_clear.tscn" id="10_pe5mx"]
 [ext_resource type="PackedScene" uid="uid://0aog0yp3sugo" path="res://station/assets/wall_button.tscn" id="11_jos7s"]
+[ext_resource type="PackedScene" uid="uid://by8hcq3nk66lg" path="res://station/assets/doors/door_controls.tscn" id="11_y88ua"]
 [ext_resource type="PackedScene" uid="uid://cjye0g4pfbcmf" path="res://station/assets/doors/two_tone_door.tscn" id="13_0cdor"]
 [ext_resource type="PackedScene" uid="uid://b05od7urmjmru" path="res://station/assets/wall_switch.tscn" id="14_fv7je"]
 [ext_resource type="PackedScene" uid="uid://8eousrk5abmf" path="res://station/tiles/violet_template.tscn" id="16_h38vm"]
@@ -151,6 +152,10 @@ interact_objects = [NodePath("../TwoToneDoor")]
 [node name="ButtonClear2" parent="Anchors/Anchor2" unique_id=1680573584 node_paths=PackedStringArray("interact_objects") instance=ExtResource("10_pe5mx")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -2.5040004, 1.2, -6.124996)
 interact_objects = [NodePath("../TwoToneDoor")]
+
+[node name="DoorControls" parent="Anchors/Anchor2" unique_id=1428249444 node_paths=PackedStringArray("target_anchor") instance=ExtResource("11_y88ua")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.963, 1.25, -6)
+target_anchor = NodePath("..")
 
 [node name="Anchor3" type="Node3D" parent="Anchors" unique_id=1575165431 groups=["Anchor"]]
 transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 14, 0, 0)
