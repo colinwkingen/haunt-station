@@ -32,11 +32,11 @@ func lock_in_room() -> void:
 		# uh, call this
 func update_description() -> void:
 	if  target_anchor.container_node:
-		var sector_locked: String = target_anchor.container_node.container_data.sector
+		var sector_locked: String = target_anchor.container_node.sector
 		room_description.text = "%s id=%s" % [sector_locked, target_anchor.container_node.container_id]
 		room_description.modulate = Color.RED
 	elif target_anchor.temp_container_node:
-		var sector_temp: String = target_anchor.temp_container_node.container_data.sector
+		var sector_temp: String = target_anchor.temp_container_node.sector
 		room_description.text = "%s id=%s" % [sector_temp, target_anchor.temp_container_node.container_id]
 		room_description.modulate = Color.GREEN
 	else:

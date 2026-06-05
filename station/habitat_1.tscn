@@ -31,6 +31,10 @@ metadata/_custom_type_script = "uid://cjpgxsaekjusf"
 
 [node name="Station" type="Node3D" unique_id=1958024173 node_paths=PackedStringArray("big_board") groups=["Container"]]
 script = ExtResource("1_44g5b")
+power_level_upper_bound = 1
+power_level_lower_bound = 1
+power_level = 1
+sector = "HABITAT"
 big_board = NodePath("BigBoard")
 
 [node name="Lights" type="Node3D" parent="." unique_id=283858283]

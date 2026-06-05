@@ -67,7 +67,7 @@ func open_door_async() -> void:
 	
 func current_sector() -> String:
 	var container: ShipContainer = owner
-	return container.container_data.sector
+	return container.sector
 	
 func interact() -> void:
 	var container: ShipContainer = owner

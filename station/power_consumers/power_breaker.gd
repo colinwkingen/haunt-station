@@ -15,8 +15,8 @@ extends Node3D
 func _ready() -> void:
 	if set_sector_to_parent:
 		var parent_container: ShipContainer = owner
-		print("setting sector to parent sector %s" % parent_container.container_data.sector)
-		sector = parent_container.container_data.sector
+		print("setting sector to parent sector %s" % parent_container.sector)
+		sector = parent_container.sector
 	if is_on:
 		switch_on()
 	else: 

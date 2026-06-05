@@ -6,9 +6,7 @@ var anchor_id: int = -1
 @export var anchor_name: String
 @export var cardinal_direction: String
 @export var anchor_data: ContainerAnchorData
-#@export var join_door: Node3D
 
-signal temp_container_switched(container_data: ContainerData)
 
 var container_node: ShipContainer
 
