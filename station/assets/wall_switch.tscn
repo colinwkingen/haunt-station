@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cj0yaeh3yg7tu" path="res://addons/cogito/Components/Properties/CogitoProperties.tscn" id="6_7jtwa"]
 [ext_resource type="PackedScene" uid="uid://6d6is2x1egew" path="res://addons/cogito/Components/CurrencyCheckComponent.tscn" id="7_ii3mi"]
 [ext_resource type="Script" uid="uid://bsn1v7hxr3851" path="res://station/assets/omni_light_switch.gd" id="7_y7t7r"]
+[ext_resource type="FontFile" uid="uid://buqfn8ilmreu8" path="res://m6x11.ttf" id="9_8w3fu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8pdj"]
 resource_name = "Material.001"
@@ -164,8 +165,9 @@ data = PackedVector3Array(-0.035, 0.05000007, 0.125, -0.035, 0.14999998, -0.125,
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ii3mi"]
 data = PackedVector3Array(-0.035, -0.14999998, 0.125, -0.035, -0.05000007, -0.125, -0.035, -0.05000007, 0.125, -0.035, -0.14999998, 0.125, -0.035, -0.14999998, -0.125, -0.035, -0.05000007, -0.125, -0.0037499997, -0.05000007, -0.125, 0.015000001, -0.087499976, 0.125, -0.0037499997, -0.05000007, 0.125, -0.0037499997, -0.05000007, -0.125, 0.015000001, -0.087499976, -0.125, 0.015000001, -0.087499976, 0.125, -0.0037499997, -0.05000007, -0.125, -0.035, -0.05000007, 0.125, -0.035, -0.05000007, -0.125, -0.0037499997, -0.05000007, -0.125, -0.0037499997, -0.05000007, 0.125, -0.035, -0.05000007, 0.125, -0.0037499997, -0.14999998, 0.125, 0.015000001, -0.11250007, -0.125, -0.0037499997, -0.14999998, -0.125, -0.0037499997, -0.14999998, 0.125, 0.015000001, -0.11250007, 0.125, 0.015000001, -0.11250007, -0.125, -0.0037499997, -0.14999998, -0.125, -0.035, -0.05000007, -0.125, -0.035, -0.14999998, -0.125, -0.035, -0.05000007, -0.125, 0.015000001, -0.087499976, -0.125, -0.0037499997, -0.05000007, -0.125, 0.015000001, -0.087499976, -0.125, -0.0037499997, -0.14999998, -0.125, 0.015000001, -0.11250007, -0.125, -0.035, -0.05000007, -0.125, -0.0037499997, -0.14999998, -0.125, 0.015000001, -0.087499976, -0.125, -0.035, -0.14999998, -0.125, -0.0037499997, -0.14999998, 0.125, -0.0037499997, -0.14999998, -0.125, -0.035, -0.14999998, -0.125, -0.035, -0.14999998, 0.125, -0.0037499997, -0.14999998, 0.125, 0.015000001, -0.11250007, -0.125, 0.015000001, -0.087499976, 0.125, 0.015000001, -0.087499976, -0.125, 0.015000001, -0.11250007, -0.125, 0.015000001, -0.11250007, 0.125, 0.015000001, -0.087499976, 0.125, -0.035, -0.14999998, 0.125, 0.015000001, -0.11250007, 0.125, -0.0037499997, -0.14999998, 0.125, 0.015000001, -0.11250007, 0.125, -0.0037499997, -0.05000007, 0.125, 0.015000001, -0.087499976, 0.125, -0.0037499997, -0.05000007, 0.125, -0.035, -0.14999998, 0.125, -0.035, -0.05000007, 0.125, 0.015000001, -0.11250007, 0.125, -0.035, -0.14999998, 0.125, -0.0037499997, -0.05000007, 0.125)
 
-[node name="WallSwitch" type="Node3D" unique_id=1465050445]
+[node name="WallSwitch" type="Node3D" unique_id=1465050445 node_paths=PackedStringArray("power_label")]
 script = ExtResource("1_4h0dq")
+power_label = NodePath("PowerLabel")
 
 [node name="GenericButton" type="AnimatableBody3D" parent="." unique_id=1679353221]
 transform = Transform3D(1, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0)
@@ -230,6 +232,15 @@ light_color = Color(1.0039216, 0, 0, 1)
 light_energy = 0.25
 omni_range = 1.0
 script = ExtResource("7_y7t7r")
+
+[node name="PowerLabel" type="Label3D" parent="." unique_id=249281088]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, -0.391979, 0)
+modulate = Color(1, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "Foo "
+font = ExtResource("9_8w3fu")
+font_size = 36
+outline_size = 0
 
 [connection signal="damage_received" from="GenericButton" to="GenericButton" method="_on_damage_received"]
 [connection signal="pressed" from="GenericButton" to="." method="_on_generic_button_pressed"]

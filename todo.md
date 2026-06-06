@@ -3,9 +3,9 @@
 3. max width of world, keep door closed. indicate somehow
 4. make breakers update HUD DONE
 5. replace crap ass button with new clear one (blue to red) DONE, but still crap ass
-6. make door control labels switch, ensure new rooms have different data
-7. make door option roster fixed list, not infinite
-8. make breakers vary in power range (upper and lower bound?)
+6. make door control labels switch, ensure new rooms have different data DONE
+7. make door option roster fixed list, not infinite DONE
+8. make breakers vary in power range (upper and lower bound?) DONE
 
 999. add richtext label with lock and power symbols
 
@@ -14,7 +14,7 @@ Door behavior:
 	2. Doors start closed, button opens DONE
 	3. Rooms specific door power needs (random? row scaled? both?)
 	4. Doors have little power cost display
-	
+	5. Breakers have little power cost display DONE
 
 Other Power consumers:
 	1. Some sort of generator provides more
@@ -23,8 +23,8 @@ Other Power consumers:
 	
 
 How should rooms/containers actually be tracked?
-	1. They should be registered on the world grid when finalized
-	2. when you go to a door, you should be able to rotate through a list of potential selections
+	1. They should be registered on the world grid when finalized DONE
+	2. when you go to a door, you should be able to rotate through a list of potential selections DONE
 	3. they... don't have an id yet then?
 
 # ["DOCKING", "ENGINEERING", "HABITAT", "OPERATIONS", "WASTE_PROCESSING"]

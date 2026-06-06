@@ -26,14 +26,14 @@ func unstage() -> void:
 	visible = false
 	set_process_mode(Node.PROCESS_MODE_DISABLED)
 	# go out of view, until we manage dequeueing undocked
-	ManagerBus.global_station_state.remove_container_atts(self)
+	#ManagerBus.global_station_state.remove_container_atts(self)
 	set_position(Vector3(1000,1000,1000))
 
 
 func stage() -> void:
 	visible = true
 	set_process_mode(Node.PROCESS_MODE_INHERIT)
-	ManagerBus.global_station_state.add_container_atts(self)
+	#ManagerBus.global_station_state.add_container_atts(self)
 	_label_big_board_with_coords()
 	ManagerBus.global_station_state.refresh_sector_power()
 

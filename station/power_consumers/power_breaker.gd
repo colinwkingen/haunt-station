@@ -5,7 +5,7 @@ extends Node3D
 
 # should we have A/B/C states instead
 @export var is_on: bool = true
-@export var power_level: int = 1
+var power_level: int
 # whether the sector type is of the container that owns it
 @export var set_sector_to_parent: bool
 @export var sector: String
@@ -13,12 +13,17 @@ extends Node3D
 @export var power_level_upper_bound: int
 @export var power_level_lower_bound: int
 
+@export var power_label: Label3D
+
 #var global_station_state: GlobalStationState
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print("power level pre rand=%s" % power_level)
 	power_level = randi_range(power_level_lower_bound, power_level_upper_bound)
 	print("power level post rand=%s" % power_level)
+	
+	power_label.text = "%s%s" % [power_level, "⚡"]
+	
 	if set_sector_to_parent:
 		var parent_container: ShipContainer = owner
 		print("setting sector to parent sector %s" % parent_container.sector)

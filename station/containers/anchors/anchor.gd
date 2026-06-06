@@ -162,6 +162,7 @@ func previous_room() -> void:
 		return
 	var scene: PackedScene = ManagerBus.container_manager.get_scene_by_index(get_previous_scene_index())
 	var container: ShipContainer = scene.instantiate()
+	container.unstage()
 	if container:
 		print("container created")
 		if temp_container_node:
@@ -177,6 +178,7 @@ func lock_in_room() -> void:
 		container_node = temp_container_node
 	set_container(container_node)
 	ManagerBus.world_manager.register_container_simple(container_node)
+	ManagerBus.global_station_state.add_container_atts(container_node)
 	container_node.stage()
 	
 func can_dock_container(container: ShipContainer) -> bool:
