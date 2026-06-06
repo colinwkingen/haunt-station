@@ -21,8 +21,8 @@ albedo_color = Color(0.02617561, 0.026175609, 0.026175609, 1)
 
 [node name="Station" type="Node3D" unique_id=1958024173 node_paths=PackedStringArray("big_board") groups=["Container"]]
 script = ExtResource("1_52fni")
-power_level_upper_bound = 1
-power_level_lower_bound = 1
+power_level_upper_bound = 3
+power_level_lower_bound = 2
 power_level = 1
 sector = "WASTE_PROCESSING"
 big_board = NodePath("BigBoard")

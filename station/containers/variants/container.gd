@@ -14,6 +14,7 @@ var container_id: int
 @export var big_board: BigBoard
 
 func _ready() -> void:
+	power_level = randi_range(power_level_lower_bound,power_level_upper_bound)
 	pass
 		
 
