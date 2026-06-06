@@ -26,11 +26,10 @@ func unstage() -> void:
 	set_process_mode(Node.PROCESS_MODE_DISABLED)
 	# go out of view, until we manage dequeueing undocked
 	ManagerBus.global_station_state.remove_container_atts(self)
-	set_position(Vector3(100,100,100))
+	set_position(Vector3(1000,1000,1000))
 
-# this must be being called twice on NEW containers and not seed for the power to be doubled
+
 func stage() -> void:
-	print("stage called!!!")
 	visible = true
 	set_process_mode(Node.PROCESS_MODE_INHERIT)
 	ManagerBus.global_station_state.add_container_atts(self)

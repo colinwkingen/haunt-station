@@ -18,7 +18,7 @@ modulate = Color(0, 1, 0, 1)
 outline_modulate = Color(0, 1, 0, 1)
 text = "Foo Bar"
 font = ExtResource("2_ldosg")
-font_size = 24
+font_size = 20
 outline_size = 0
 
 [node name="ButtonClear1" parent="." index="2" unique_id=135473490 node_paths=PackedStringArray("interact_objects") instance=ExtResource("3_ldosg")]

@@ -120,6 +120,10 @@ interact_objects = [NodePath("../TwoToneDoor")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -2.5040004, 1.2, -6.124996)
 interact_objects = [NodePath("../TwoToneDoor")]
 
+[node name="DoorControls" parent="Anchors/Anchor1" unique_id=1428249444 node_paths=PackedStringArray("target_anchor") instance=ExtResource("11_y88ua")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.963, 1.25, -6)
+target_anchor = NodePath("..")
+
 [node name="Anchor2" type="Node3D" parent="Anchors" unique_id=271790435 groups=["Anchor"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14)
 script = ExtResource("7_52y2s")
@@ -139,7 +143,7 @@ interact_objects = [NodePath("../TwoToneDoor")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -2.5040004, 1.2, -6.124996)
 interact_objects = [NodePath("../TwoToneDoor")]
 
-[node name="DoorControls" parent="Anchors/Anchor2" unique_id=1428249444 node_paths=PackedStringArray("target_anchor") instance=ExtResource("11_y88ua")]
+[node name="DoorControls" parent="Anchors/Anchor2" unique_id=1291304033 node_paths=PackedStringArray("target_anchor") instance=ExtResource("11_y88ua")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.963, 1.25, -6)
 target_anchor = NodePath("..")
 
@@ -162,6 +166,10 @@ interact_objects = [NodePath("../TwoToneDoor")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -2.5040004, 1.2, -6.124996)
 interact_objects = [NodePath("../TwoToneDoor")]
 
+[node name="DoorControls" parent="Anchors/Anchor3" unique_id=1661972813 node_paths=PackedStringArray("target_anchor") instance=ExtResource("11_y88ua")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.963, 1.25, -6)
+target_anchor = NodePath("..")
+
 [node name="Anchor4" type="Node3D" parent="Anchors" unique_id=1062399407 groups=["Anchor"]]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14, 0, 0)
 script = ExtResource("7_52y2s")
@@ -180,6 +188,10 @@ interact_objects = [NodePath("../TwoToneDoor")]
 [node name="ButtonClear2" parent="Anchors/Anchor4" unique_id=824977622 node_paths=PackedStringArray("interact_objects") instance=ExtResource("10_pe5mx")]
 transform = Transform3D(-1, 0, 8.742277e-08, 0, 1, 0, -8.742277e-08, 0, -1, -2.5040004, 1.2, -6.124996)
 interact_objects = [NodePath("../TwoToneDoor")]
+
+[node name="DoorControls" parent="Anchors/Anchor4" unique_id=1118751563 node_paths=PackedStringArray("target_anchor") instance=ExtResource("11_y88ua")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.963, 1.25, -6)
+target_anchor = NodePath("..")
 
 [node name="BreakerSwitch" parent="." unique_id=1679353221 node_paths=PackedStringArray("consumers") groups=["BreakerSwitch"] instance=ExtResource("14_fv7je")]
 transform = Transform3D(-4.3711385e-08, 0, -0.9999996, 0, 0.9999995, 0, 0.99999994, 0, -4.371137e-08, -6.363, 2, -7.5)

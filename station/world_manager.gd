@@ -7,6 +7,9 @@ extends Node
 
 var world_grid: Dictionary[Vector3i, ShipContainer]
 
+func add_to_world(container_instance: ShipContainer) -> void:
+	var world: Node3D = get_tree().get_first_node_in_group("World")
+	world.add_child(container_instance)
 
 func register_container_simple(container: ShipContainer) -> void:
 	var vect: Vector3i = get_grid_position(container)
@@ -14,6 +17,7 @@ func register_container_simple(container: ShipContainer) -> void:
 	print("world manageer now indexes %s locations"%world_grid.keys().size())
 	for key in world_grid.keys():
 		print("loc at %s has the container %s"%[key, world_grid[vect]])
+	add_to_world(container)
 	
 # wire BigBoard to show each room coords
 	
@@ -30,14 +34,3 @@ func get_grid_position(container: ShipContainer) -> Vector3i:
 func num_locations() -> int:
 	return world_grid.keys().size()
 	
-
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
