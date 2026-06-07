@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cuuvjj2jd1nb0"]
+
+[ext_resource type="PackedScene" uid="uid://cdpm4pvf5xvp" path="res://station/power_consumers/server_tower.blend" id="1_h31wn"]
+
+[node name="server_tower" unique_id=2026363750 instance=ExtResource("1_h31wn")]

@@ -13,8 +13,9 @@ Door behavior:
 	1. Doors consume power DONE
 	2. Doors start closed, button opens DONE
 	3. Rooms specific door power needs (random? row scaled? both?)
-	4. Doors have little power cost display
+	4. Doors have little power cost display DONE
 	5. Breakers have little power cost display DONE
+	6. you shouldn't be able to open door until room locked
 
 Other Power consumers:
 	1. Some sort of generator provides more

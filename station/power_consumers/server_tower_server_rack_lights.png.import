@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4kqtq106bpp"
-path.s3tc="res://.godot/imported/new_steel_black.png-686f3af80b61f690d0e592c9f87e0d72.s3tc.ctex"
+uid="uid://dr6pubdny6mmw"
+path.s3tc="res://.godot/imported/server_tower_server_rack_lights.png-977ad664b0eecf5153b6b21040c78aed.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "e42b5bdf3bef063a83530de4f489ea75"
+}
 
 [deps]
 
-source_file="res://station/power_consumers/textures/new_steel_black.png"
-dest_files=["res://.godot/imported/new_steel_black.png-686f3af80b61f690d0e592c9f87e0d72.s3tc.ctex"]
+source_file="res://station/power_consumers/server_tower_server_rack_lights.png"
+dest_files=["res://.godot/imported/server_tower_server_rack_lights.png-977ad664b0eecf5153b6b21040c78aed.s3tc.ctex"]
 
 [params]
 

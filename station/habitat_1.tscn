@@ -11,9 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://bv2ybhr03tl86" path="res://station/assets/button_clear.tscn" id="11_urbix"]
 [ext_resource type="Script" uid="uid://bwwrcdxxgvbk7" path="res://station/assets/doors/bay_door.gd" id="12_vrn5r"]
 [ext_resource type="PackedScene" uid="uid://b05od7urmjmru" path="res://station/assets/wall_switch.tscn" id="13_633m1"]
+[ext_resource type="PackedScene" uid="uid://cuuvjj2jd1nb0" path="res://station/power_consumers/server_tower.tscn" id="13_urbix"]
 [ext_resource type="PackedScene" uid="uid://bsm0xrcmubp05" path="res://station/tiles/teal_template.tscn" id="14_44g5b"]
 
-[node name="Station" type="Node3D" unique_id=1958024173 node_paths=PackedStringArray("big_board") groups=["Container"]]
+[node name="Station2" type="Node3D" unique_id=1958024173 node_paths=PackedStringArray("big_board") groups=["Container"]]
 script = ExtResource("1_44g5b")
 power_level_upper_bound = 1
 power_level_lower_bound = 1
@@ -139,3 +140,6 @@ power_level_lower_bound = 2
 
 [node name="teal_template" parent="." unique_id=1110051939 instance=ExtResource("14_44g5b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.006, -0.002)
+
+[node name="server_tower" parent="." unique_id=2026363750 instance=ExtResource("13_urbix")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 6)

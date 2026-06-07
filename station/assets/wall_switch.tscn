@@ -236,11 +236,10 @@ script = ExtResource("7_y7t7r")
 [node name="PowerLabel" type="Label3D" parent="." unique_id=249281088]
 transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, 0, -0.391979, 0)
 modulate = Color(1, 0, 0, 1)
-outline_modulate = Color(1, 1, 1, 1)
 text = "Foo "
 font = ExtResource("9_8w3fu")
-font_size = 36
-outline_size = 0
+outline_size = 4
+uppercase = true
 
 [connection signal="damage_received" from="GenericButton" to="GenericButton" method="_on_damage_received"]
 [connection signal="pressed" from="GenericButton" to="." method="_on_generic_button_pressed"]
